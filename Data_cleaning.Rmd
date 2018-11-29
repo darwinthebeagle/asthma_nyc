@@ -13,12 +13,11 @@ library(tidyverse)
 ```
 
 ```{r}
-asthma_df <- readr::read_csv('./Data/Air_Quality.csv')
+asthma_df <- readr::read_csv('./Data/Air_Quality.csv') %>% 
+  filter(year_description %in% c('2005', '2005-2007', '2009-2011', '2013'))
 ```
 
 ```{r}
-asthma_df %>% 
-  group_by(year_description) %>% 
-  summarize(counts = n())
+
 ```
 
