@@ -19,6 +19,7 @@ which do not make sense. We thus kept only the observations with values for
 the variable **year_description** that make sense. Cleaned variable names.
 ```{r}
 asthma_df <- readr::read_csv('./Data/Air_Quality.csv')
+poverty_df <- readr::read_csv('./Data/Poverty.csv')
 
 asthma_df %>% 
   group_by(year_description) %>% 
@@ -56,6 +57,9 @@ benz_dens = asthma_clean %>%
   group_by(UHF) %>%
   ggplot(aes(x = data_valuemessage, fill = UHF)) +
   geom_density(alpha = 0.5) +
+  labs(title = "Proportion of Unsolved Homicides in the US by Cities",
+       x = "City and State",
+       y = "Unsolved Homicide Proportion") + 
   theme(legend.position = "none")
 
 SO2_dens = asthma_clean %>% 
