@@ -1,4 +1,4 @@
-indicator_data_id,indicator_id,name,Measure,geo_type_name,geo_entity_id,geo_entity_name,year_description,data_valuemessage
+indicator_data_id,indicator_id,name,measure,geo_type_name,geo_entity_id,geo_entity_name,year_description,data_valuemessage
 130728,646,Air Toxics Concentrations- Average Benzene Concentrations,Average Concentration,Borough,1,Bronx,2005,2.8
 130729,646,Air Toxics Concentrations- Average Benzene Concentrations,Average Concentration,Borough,2,Brooklyn,2005,2.8
 130730,646,Air Toxics Concentrations- Average Benzene Concentrations,Average Concentration,Borough,3,Manhattan,2005,4.7
