@@ -17,14 +17,14 @@ library(stringr)
 
 ```{r, include = F}
 
-assign_borough <- function() {
-  if (geo_entity_id < 200)
+assign_borough <- function(vector) {
+  if (vector < 200)
     boro_assignment = "Bronx"
-  else if (geo_entity_id < 300)
+  else if (vector < 300)
     boro_assignment = "Brooklyn"
-  else if (geo_entity_id < 400)
+  else if (vector < 400)
     boro_assignment = "Manhattan"
-  else if (geo_entity_id < 500)
+  else if (vector < 500)
     boro_assignment = "Queens"
   else 
     boro_assignment = "Staten Island"
@@ -92,29 +92,27 @@ Column
 
 ### Chart 1
     
-```{r}
-# renderPlotly({
-#   if_else(input$boro_choice != '(Select all)', 
-#           final_boro_choice = input$boro_choice,
-#           final_boro_choice = c('Bronx', 'Brookyln', 'Manhattan', 'Queens',
-#                                 'Staten Island'))
-#   
-#   if_else(input$outcome_choice != '(Select all)',
-#           final_outcome_choice = input$outcome_choice,
-#           final_outcome_choice = c('ED visits', 'Hospitalizations', 'Deaths'))
-# 
-#   asthma_df %>%
-#     filter(geo_entity_name == 'UHF42') %>% 
-#     mutate(borough = map(geo_entity_id, assign_borough)) %>% 
-#     filter(borough %in% final_boro_choice,
-#            outcome %in% final_outcome_choice)
-#   
-#   
-#   plot_ly(x = ~neighborhood, y = ~rate, type = "bar",
-#           alpha = 0.5,
-#           color = ~price,
-#           text = ~text_label)
-# })
+```{r, echo=F}
+renderPlotly({
+  asthma_df %>%
+    filter(geo_type_name == 'UHF42') %>%
+    mutate(borough = map(geo_entity_id, assign_borough)) %>%
+    filter(
+      if (input$boro_choice == '(Select all)') 
+        TRUE 
+      else 
+        borough %in% input$boro_choice) %>% 
+    filter(
+      if (input$outcome_choice == '(Select all)')
+        TRUE
+      else
+        outcome %in% input$outcome_choice
+    ) %>% 
+    mutate(geo_entity_name = forcats::fct_reorder(geo_entity_name, data_valuemessage)) %>% 
+    
+    plot_ly(x = ~geo_entity_name, y = ~data_valuemessage, type = "bar",
+          alpha = 0.5)
+})
 ```
     
 ### Chart 2
