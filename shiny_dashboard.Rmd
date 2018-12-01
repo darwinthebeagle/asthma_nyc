@@ -132,33 +132,35 @@ renderPlotly({
     plot_ly(x = ~geo_entity_name, y = ~time1_rate, 
             type = "bar", name = '2005-2007') %>% 
     add_trace(y = ~time2_rate, name = "2009-2011") %>% 
-    layout(xaxis = list(title = "Neighborhood"),
-           yaxis = list(title = 'Rate per 10,000 individuals'), 
+    layout(title = 'Neighborhoods',
+           xaxis = list(title = ''),
+           yaxis = list(title = 'Rate per 100,000 individuals'), 
            barmode = "group")
 })
 ```
     
+    
 ### Chart 2
-
 ```{r, echo = F}
 renderPlotly({
   asthma_df %>%
-    filter(geo_type_name == 'UHF42',
+    filter(geo_type_name %in% c('Borough'),
            age_group == input$agegroup_choice) %>%
-    mutate(borough = map(geo_entity_id, assign_borough)) %>%
-    filter(
-      if (input$boro_choice == '(Select all)') 
-        TRUE 
-      else 
-        borough %in% input$boro_choice) %>% 
     filter(
       if (input$outcome_choice == '(Select all)')
         TRUE
       else
         outcome %in% input$outcome_choice
     ) %>% 
+    mutate(geo_entity_name = forcats::fct_reorder(geo_entity_name, 
+                                                  data_valuemessage)) %>% 
     
-    plot_ly(x = ~year_description, y = ~data_valuemessage, type = "scatter",
-            mode = "lines")
+    plot_ly(x = ~geo_entity_name, y = ~time1_rate, 
+            type = "bar", name = '2005-2007') %>% 
+    add_trace(y = ~time2_rate, name = "2009-2011") %>% 
+    layout(title = 'Boroughs',
+           xaxis = list(title = ''),
+           yaxis = list(title = 'Rate per 100,000 individuals'), 
+           barmode = "group")
 })
 ```
