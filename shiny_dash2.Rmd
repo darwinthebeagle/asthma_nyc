@@ -1,0 +1,52 @@
+---
+title: "Single Column (Fill)"
+output: 
+  flexdashboard::flex_dashboard:
+    vertical_layout: fill
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(flexdashboard)
+library(tidyverse)
+library(viridis)
+library(plotly)
+library(stringr)
+```
+
+```{r, include = F}
+poverty_df = readr::read_csv('./Data/Poverty.csv')
+```
+
+
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+```{r, echo = F}
+
+```
+
+```{r, echo = F}
+
+```
+
+```{r, echo = F}
+
+```
+
+Column
+----------------------------------------------------------------------
+
+### Chart 1
+```{r, echo=F}
+
+```
+    
+    
+### Chart 2
+```{r, echo = F}
+
+```
+
