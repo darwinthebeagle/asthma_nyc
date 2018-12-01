@@ -28,6 +28,10 @@ asthma_df %>%
 asthma_df <- asthma_df %>% 
   filter(year_description %in% c('2005', '2005-2007', '2009-2011', '2013')) %>% 
   janitor::clean_names()
+
+poverty_df %>% 
+  janitor::clean_names() %>%
+  select(-"notes_percent", -"notes_number")
 ```
 
 Looking at the different observations recorded in the dataset. There are 18
