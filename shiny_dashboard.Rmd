@@ -1,0 +1,164 @@
+---
+title: "Single Column (Fill)"
+output: 
+  flexdashboard::flex_dashboard:
+    vertical_layout: fill
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(flexdashboard)
+library(tidyverse)
+library(viridis)
+library(plotly)
+library(stringr)
+```
+
+```{r, include = F}
+
+assign_borough <- function(vector) {
+  if (vector < 200)
+    boro_assignment = "Bronx"
+  else if (vector < 300)
+    boro_assignment = "Brooklyn"
+  else if (vector < 400)
+    boro_assignment = "Manhattan"
+  else if (vector < 500)
+    boro_assignment = "Queens"
+  else 
+    boro_assignment = "Staten Island"
+  
+  boro_assignment
+}
+
+assign_outcome <- function(vector) {
+  if (str_detect(vector, "ED"))
+    outcome_assignment = "ED visits"
+  else if (str_detect(vector, "Hospitalizations"))
+    outcome_assignment = "Hospitalizations"
+  else
+    outcome_assignment = "Deaths"
+  
+  outcome_assignment
+}
+
+asthma_df <- readr::read_csv('./Data/nyc_asthma_cleaned.csv') %>% 
+  filter(str_detect(name, "O3-Attributable") == T) %>% 
+  mutate(geo_entity_id = as.numeric(geo_entity_id)) %>% 
+  mutate(outcome = purrr::map(name, assign_outcome)) %>% 
+  mutate(age_group = if_else(str_detect(measure, "Children"),
+                             "Children",
+                             "Adults")) %>% 
+  mutate(time1_rate = if_else(year_description == "2005-2007", 
+                              data_valuemessage, 
+                              as.double(NA)),
+         time2_rate = if_else(year_description == "2009-2011",
+                              data_valuemessage,
+                              as.double(NA)))
+
+# asthma_df %>%
+#   group_by(year_description) %>%
+#   summarize(counts = n())
+# 
+# asthma_df %>% 
+#   group_by(name) %>% 
+#   summarize(counts = n())
+# 
+# asthma_df %>% 
+#   mutate(obs = str_c(name, measure, year_description, sep = " ")) %>% 
+#   distinct(obs)
+# 
+# asthma_df %>% 
+#   distinct(geo_type_name)
+```
+
+
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+```{r, echo = F}
+boros = c('Bronx', 'Brooklyn', 'Manhattan', 'Queens', 'Staten Island', 
+          '(Select all)')
+
+# selectInput widget - Boroughs
+selectInput("boro_choice", label = h3("Select borough"), 
+            choices = boros, selected = "Manhattan")
+```
+
+```{r, echo = F}
+outcomes = c(asthma_df %>% distinct(outcome) %>% pull(), '(Select all)')
+
+# radioButtons widget - Outcomes
+radioButtons("outcome_choice", label = h3("Choose outcome"), 
+             choices = outcomes, selected = "ED visits")
+```
+
+```{r, echo = F}
+agegroups = asthma_df %>% distinct(age_group) %>% pull()
+
+#radioButtons widget - Agegroup
+radioButtons("agegroup_choice", label = h3("Choose age group"),
+             choices = agegroups, selected = 'Adults')
+
+
+```
+
+Column
+----------------------------------------------------------------------
+
+### Chart 1
+```{r, echo=F}
+renderPlotly({
+  asthma_df %>%
+    filter(geo_type_name == 'UHF42',
+           age_group == input$agegroup_choice) %>%
+    mutate(borough = map(geo_entity_id, assign_borough)) %>%
+    filter(
+      if (input$boro_choice == '(Select all)') 
+        TRUE 
+      else 
+        borough %in% input$boro_choice) %>% 
+    filter(
+      if (input$outcome_choice == '(Select all)')
+        TRUE
+      else
+        outcome %in% input$outcome_choice
+    ) %>% 
+    mutate(geo_entity_name = forcats::fct_reorder(geo_entity_name, 
+                                                  data_valuemessage)) %>% 
+    
+    plot_ly(x = ~geo_entity_name, y = ~time1_rate, 
+            type = "bar", name = '2005-2007') %>% 
+    add_trace(y = ~time2_rate, name = "2009-2011") %>% 
+    layout(xaxis = list(title = "Neighborhood"),
+           yaxis = list(title = 'Rate per 10,000 individuals'), 
+           barmode = "group")
+})
+```
+    
+### Chart 2
+
+```{r, echo = F}
+renderPlotly({
+  asthma_df %>%
+    filter(geo_type_name == 'UHF42',
+           age_group == input$agegroup_choice) %>%
+    mutate(borough = map(geo_entity_id, assign_borough)) %>%
+    filter(
+      if (input$boro_choice == '(Select all)') 
+        TRUE 
+      else 
+        borough %in% input$boro_choice) %>% 
+    filter(
+      if (input$outcome_choice == '(Select all)')
+        TRUE
+      else
+        outcome %in% input$outcome_choice
+    ) %>% 
+    
+    plot_ly(x = ~year_description, y = ~data_valuemessage, type = "scatter",
+            mode = "lines")
+})
+```

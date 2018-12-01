@@ -14,7 +14,7 @@ library(tidyverse)
 
 Read in dataset. Looking at the variable for year, some observations had values
 which do not make sense. We thus kept only the observations with values for
-the variable **year_description** that make sense
+the variable **year_description** that make sense. Cleaned variable names.
 ```{r}
 asthma_df <- readr::read_csv('./Data/Air_Quality.csv')
 
@@ -23,7 +23,8 @@ asthma_df %>%
   summarize(counts = n())
 
 asthma_df <- asthma_df %>% 
-  filter(year_description %in% c('2005', '2005-2007', '2009-2011', '2013'))
+  filter(year_description %in% c('2005', '2005-2007', '2009-2011', '2013')) %>% 
+  janitor::clean_names()
 ```
 
 Looking at the different observations recorded in the dataset. There are 18
@@ -31,7 +32,7 @@ unique kinds of observations recorded for NYC overall, by boroughs, and by
 neighborhoods for the corresponding years. 
 ```{r}
 asthma_df %>% 
-  mutate(obsv = stringr::str_c(name, Measure, sep = " ")) %>% 
+  mutate(obsv = stringr::str_c(name, measure, sep = " ")) %>% 
   group_by(obsv) %>% 
   summarize(counts = n())
 ```
