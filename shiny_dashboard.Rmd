@@ -1,0 +1,124 @@
+---
+title: "Single Column (Fill)"
+output: 
+  flexdashboard::flex_dashboard:
+    vertical_layout: fill
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(flexdashboard)
+library(tidyverse)
+library(viridis)
+library(plotly)
+library(stringr)
+```
+
+```{r, include = F}
+
+assign_borough <- function() {
+  if (geo_entity_id < 200)
+    boro_assignment = "Bronx"
+  else if (geo_entity_id < 300)
+    boro_assignment = "Brooklyn"
+  else if (geo_entity_id < 400)
+    boro_assignment = "Manhattan"
+  else if (geo_entity_id < 500)
+    boro_assignment = "Queens"
+  else 
+    boro_assignment = "Staten Island"
+  
+  boro_assignment
+}
+
+assign_outcome <- function(vector) {
+  if (str_detect(vector, "ED"))
+    outcome_assignment = "ED visits"
+  else if (str_detect(vector, "Hospitalizations"))
+    outcome_assignment = "Hospitalizations"
+  else
+    outcome_assignment = "Deaths"
+  
+  outcome_assignment
+}
+
+asthma_df <- readr::read_csv('./Data/nyc_asthma_cleaned.csv') %>% 
+  filter(stringr::str_detect(name, "O3-Attributable") == T) %>% 
+  mutate(geo_entity_id = as.numeric(geo_entity_id)) %>% 
+  mutate(outcome = purrr::map(name, assign_outcome))
+
+# asthma_df %>%
+#   group_by(year_description) %>%
+#   summarize(counts = n())
+# 
+# asthma_df %>% 
+#   group_by(name) %>% 
+#   summarize(counts = n())
+# 
+# asthma_df %>% 
+#   mutate(obs = str_c(name, measure, year_description, sep = " ")) %>% 
+#   distinct(obs)
+# 
+# asthma_df %>% 
+#   distinct(geo_type_name)
+```
+
+
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+```{r}
+boros = c('Bronx', 'Brooklyn', 'Manhattan', 'Queens', 'Staten Island', 
+          '(Select all)')
+
+# selectInput widget
+selectInput("boro_choice", label = h3("Select borough"), 
+            choices = boros, selected = "Manhattan")
+```
+
+```{r}
+outcomes = c(asthma_df %>% distinct(outcome) %>% pull(), '(Select all)')
+
+# radioButtons widget
+radioButtons("outcome_choice", label = h3("Choose outcome"), 
+             choices = outcomes, selected = "ED visits")
+```
+
+
+Column
+----------------------------------------------------------------------
+
+### Chart 1
+    
+```{r}
+# renderPlotly({
+#   if_else(input$boro_choice != '(Select all)', 
+#           final_boro_choice = input$boro_choice,
+#           final_boro_choice = c('Bronx', 'Brookyln', 'Manhattan', 'Queens',
+#                                 'Staten Island'))
+#   
+#   if_else(input$outcome_choice != '(Select all)',
+#           final_outcome_choice = input$outcome_choice,
+#           final_outcome_choice = c('ED visits', 'Hospitalizations', 'Deaths'))
+# 
+#   asthma_df %>%
+#     filter(geo_entity_name == 'UHF42') %>% 
+#     mutate(borough = map(geo_entity_id, assign_borough)) %>% 
+#     filter(borough %in% final_boro_choice,
+#            outcome %in% final_outcome_choice)
+#   
+#   
+#   plot_ly(x = ~neighborhood, y = ~rate, type = "bar",
+#           alpha = 0.5,
+#           color = ~price,
+#           text = ~text_label)
+# })
+```
+    
+### Chart 2
+
+```{r}
+
+```
