@@ -1,0 +1,125 @@
+---
+title: "NOAA National Climatic Data on New York, 1980 - 2010"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(viridis)
+library(flexdashboard)
+library(plotly)
+
+asthma_df <- readr::read_csv('./Data/Air_Quality.csv')
+
+asthma_clean = asthma_df %>%
+  mutate(geo_entity_id = as.factor(geo_entity_id),
+         UHF = recode(geo_entity_id, "101" = "Bronx", "102" = "Bronx", "103" = "Bronx", "104" = "Bronx", "105" = "Bronx", "106" = "Bronx", "107" = "Bronx", "201" = "Brooklyn", "202" = "Brooklyn", "203" = "Brooklyn", "204" = "Brooklyn", "205" = "Brooklyn", "206" = "Brooklyn", "207" = "Brooklyn", "208" = "Brooklyn", "209" = "Brooklyn", "210" = "Brooklyn", "211" = "Brooklyn", "301" = "Manhattan", "302" = "Manhattan", "303" = "Manhattan", "304" = "Manhattan", "305" = "Manhattan", "306" = "Manhattan", "307" = "Manhattan", "308" = "Manhattan", "309" = "Manhattan", "310" = "Manhattan", "401" = "Queens", "402" = "Queens", "403" = "Queens", "404" = "Queens", "405" = "Queens", "406" = "Queens", "407" = "Queens", "408" = "Queens", "409" = "Queens", "410" = "Queens", "501" = "Staten Island", "502" = "Staten Island", "503" = "Staten Island", "504" = "Staten Island")) %>%
+  filter(geo_type_name == "UHF42")
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A : 
+
+```{r}
+SO2 = asthma_clean %>% 
+  filter(name == "Boiler Emissions- Total SO2 Emissions") %>%
+  group_by(UHF) %>%
+  ggplot(aes(x = data_valuemessage, fill = UHF)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Average Benzene Concentrations",
+       x = "Neighborhood",
+       y = "Concetrations") + 
+  scale_color_viridis() +
+  coord_cartesian() +
+  theme_classic()
+
+ggplotly(SO2)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B : 
+
+```{r}
+benz = asthma_clean %>% 
+  filter(name == "Air Toxics Concentrations- Average Benzene Concentrations") %>%
+  group_by(UHF) %>%
+  ggplot(aes(x = data_valuemessage, fill = UHF)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Average Benzene Concentrations",
+       x = "Neighborhood",
+       y = "Concetrations") + 
+  scale_color_viridis() +
+  coord_cartesian() +
+  theme_classic()
+
+ggplotly(benz)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+### Chart C : 
+
+```{r}
+Formaldehyde = asthma_clean %>% 
+  filter(name == "Air Toxics Concentrations- Average Formaldehyde Concentrations") %>%
+  group_by(UHF) %>%
+  ggplot(aes(x = data_valuemessage, fill = UHF)) +
+  geom_density(alpha = 0.5) + 
+  labs(title = "Average Benzene Concentrations",
+       x = "Neighborhood",
+       y = "Concetrations") + 
+  scale_color_viridis() +
+  coord_cartesian() +
+  theme_classic()
+
+ggplotly(Formaldehyde)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+### Chart D : 
+
+```{r}
+PM_dens = asthma_clean %>% 
+  filter(name == "Boiler Emissions- Total PM2.5 Emissions") %>%
+  group_by(UHF) %>%
+  ggplot(aes(x = data_valuemessage, fill = UHF)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Average Benzene Concentrations",
+       x = "Neighborhood",
+       y = "Concetrations") + 
+  scale_color_viridis() +
+  coord_cartesian() +
+  theme_classic()
+
+ggplotly(PM_dens)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+### Chart E : 
+
+```{r}
+NO2_dens = asthma_clean %>% 
+  filter(name == "Boiler Emissions- Total NOx Emissions") %>%
+  group_by(UHF) %>%
+  ggplot(aes(x = data_valuemessage, fill = UHF)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Average Benzene Concentrations",
+       x = "Neighborhood",
+       y = "Concetrations") + 
+  scale_color_viridis() +
+  coord_cartesian() +
+  theme_classic()
+
+ggplotly(NO2_dens)
+```
+
+rmarkdown::render("flexdashboard.Rmd", output_format = "flex_dashboard")
