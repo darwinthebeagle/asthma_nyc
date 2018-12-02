@@ -1,0 +1,51 @@
+---
+title: "traffic_data"
+author: "Darwin Keung"
+date: "12/1/2018"
+output: html_document
+---
+
+---
+title: "Data_cleaning"
+author: "Felix Tran"
+date: "November 27, 2018"
+output: html_document
+---
+
+This Rmarkdown file contains code for reading in and cleaning the raw dataset.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+Read in dataset. Looking at the variable for year, some observations had values
+which do not make sense. We thus kept only the observations with values for
+the variable **year_description** that make sense. Cleaned variable names.
+```{r}
+asthma_df <- readr::read_csv('./Data/Air_Quality.csv')
+
+asthma_df %>% 
+  group_by(year_description) %>% 
+  summarize(counts = n())
+
+asthma_df <- asthma_df %>% 
+  filter(year_description %in% c('2005', '2005-2007', '2009-2011', '2013')) %>% 
+  janitor::clean_names()
+```
+
+Looking at the different observations recorded in the dataset. There are 18
+unique kinds of observations recorded for NYC overall, by boroughs, and by
+neighborhoods for the corresponding years. 
+```{r}
+asthma_df %>% 
+  mutate(obsv = stringr::str_c(name, measure, sep = " ")) %>% 
+  group_by(obsv) %>% 
+  summarize(counts = n())
+```
+
+Save this cleaned dataset in a csv file. 
+```{r}
+readr::write_csv(asthma_df, path = './Data/nyc_asthma_cleaned.csv')
+```
+

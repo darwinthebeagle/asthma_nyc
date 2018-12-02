@@ -61,9 +61,9 @@ benz_dens = asthma_clean %>%
   group_by(UHF) %>%
   ggplot(aes(x = data_valuemessage, fill = UHF)) +
   geom_density(alpha = 0.5) +
-  labs(title = "Proportion of Unsolved Homicides in the US by Cities",
-       x = "City and State",
-       y = "Unsolved Homicide Proportion") + 
+  labs(title = "Average Benzene Concentrations",
+       x = "Neighborhood",
+       y = "Concetrations") + 
   theme(legend.position = "none")
 
 SO2_dens = asthma_clean %>% 
