@@ -16,7 +16,29 @@ library(stringr)
 ```
 
 ```{r, include = F}
-poverty_df = readr::read_csv('./Data/Poverty.csv')
+assign_pollutant <- function(vector) {
+  if (str_detect(vector, "NOx"))
+    pollutant_name = "NOx"
+  else if (str_detect(vector, "PM2.5"))
+    pollutant_name = "PM 2.5"
+  else if (str_detect(vector, "SO2"))
+    pollutant_name = "SO2"
+  
+  pollutant_name
+}
+
+poverty_df = readr::read_csv('./Data/Poverty.csv') %>% 
+  janitor::clean_names() %>% 
+  filter(str_detect(geo_type_name, "UHF") == T) %>% 
+  mutate(geography_id = as.integer(geography_id)) %>% 
+  select(borough, geography_id, percent)
+
+asthma_df = readr::read_csv('./Data/nyc_asthma_cleaned.csv') %>% 
+  filter(str_detect(geo_type_name, "UHF") == T) %>% 
+  filter(str_detect(name, "Boiler") == T) %>% 
+  mutate(pollutant = purrr::map(name, assign_pollutant)) %>% 
+  rename(geography_id = geo_entity_id) %>% 
+  inner_join(., poverty_df, by = "geography_id")
 ```
 
 
@@ -25,15 +47,11 @@ Column {.sidebar}
 -----------------------------------------------------------------------
 
 ```{r, echo = F}
+pollutants = c(asthma_df %>% distinct(pollutant) %>% pull())
 
-```
-
-```{r, echo = F}
-
-```
-
-```{r, echo = F}
-
+# radioButtons widget - Pollutant
+radioButtons("pollutant_choice", label = h3("Choose pollutant"), 
+             choices = pollutants, selected = "NOx")
 ```
 
 Column
@@ -41,12 +59,17 @@ Column
 
 ### Chart 1
 ```{r, echo=F}
-
+renderPlotly({
+  asthma_df %>%
+    filter(pollutant == input$pollutant_choice) %>% 
+    plot_ly(x = ~percent, y = ~data_valuemessage, color = ~borough,
+            type = "scatter", marker = list(size = 8),
+            text = ~geo_entity_name) %>% 
+    layout(title = 
+             "Pollutant concentrations among NYC neighborhoods by poverty level",
+           xaxis = list(title = "Proportion of population in poverty (%)"),
+           yaxis = list(title = "Pollutant concentration (Total emissions/km2)"))
+})
 ```
     
     
-### Chart 2
-```{r, echo = F}
-
-```
-
