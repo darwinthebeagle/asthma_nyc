@@ -1,0 +1,36 @@
+---
+title: "Linear_regression"
+author: "Felix Tran"
+date: "December 2, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(modelr)
+library(mgcv)
+library(purrr)
+library(readr)
+```
+
+```{r}
+poverty_pm_df <- readr::read_csv('./Data/pm_and_poverty_09-13.csv') %>% 
+  janitor::clean_names() %>% 
+  filter(str_detect(geo_type_name, "UHF") == T) %>% 
+  filter(measure %in% c("Percent", "Mean")) %>% 
+  mutate(geography_id = as.integer(geo_entity_id)) %>% 
+  select(geography_id, data_value)
+
+asthma_df <- readr::read_csv('./Data/nyc_asthma_cleaned.csv') %>% 
+  janitor::clean_names() %>% 
+  filter(str_detect(geo_type_name, "UHF") == T) %>% 
+  filter(str_detect(name, "PM") == T) %>% 
+  rename(geography_id = geo_entity_id) %>% 
+  inner_join(., poverty_pm_df, by = "geography_id")
+
+
+
+
+```
+
