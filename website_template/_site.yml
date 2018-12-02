@@ -8,9 +8,11 @@ navbar:
     - icon: fa-envelope fa-lg
       href: mailto:<jw3597@cumc.columbia.edu>
     - icon: fa-github fa-lg
-      href: http://github.com/
-    - text: "Plotly"
-      href: flexdashboard.html
+      href: https://github.com/darwinthebeagle/asthma_nyc
+    - text: Shiny
+      href: shiny_dashboard.html
+    - text: Shinier
+      href: shiny_dash2.html
 
 output:
   html_document 

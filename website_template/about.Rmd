@@ -8,3 +8,38 @@ output:
 
 <center><img src="pictures/pic1.jpg" style="width:50%"></center>
 
+<h3>**Overview**<h3>
+*insert video here*
+
+<h3>**Introduction**</h3>
+
+Asthma is a major public health concern both in New York City and nationally across the United States. According to CDC's Behaviorial Risk Factor Surveillance System (BRFSS) data in 2012, approximately 1.4 million New York adults and 314,000 children (under the age of 18) reported having asthma. While data has shown that in the last 10 years, annual asthma related deaths have decreased significantly by over 20%, the disparities in air quality and asthma rates across neighborhoods should be addressed. 
+
+The objective of our project is to further understand the air quality across the different neighborhoods in New York City, through looking at different pollutants and their levels. In addition, we hope to explore the relationship between air quality, poverty, and asthma-related health outcomes.    
+
+<h3>**Data Source**</h3>
+
+The data was obtained from the [NYC Environment & Health Data Portal](http://a816-dohbesp.nyc.gov/IndicatorPublic/PublicTracking.aspx) and the [NYC OpenData](https://data.cityofnewyork.us/Environment/Air-Quality/c3uy-2p5r/data). 
+
+From the air quality data, we focused on 5 air quality pollutants:
+
+- Fine Particulate Matter (PM2.5)
+- Sulfur Dioxide (SO2)
+- Benzene
+- Formaldehyde
+- Nitrogen Oxide (NOx)
+
+
+
+<h3>**Analyses**</h3>
+research questions: 
+1) Which pollutant has the largest impact on childhood asthma?
+
+2) Which areas of NYC have the highest rates of asthma?
+
+3) Have rates of asthma and air quality changed over time?
+
+<h3>**Conclusions**</h3>
+
+
+

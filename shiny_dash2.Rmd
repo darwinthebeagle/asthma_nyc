@@ -39,6 +39,13 @@ asthma_df = readr::read_csv('./Data/nyc_asthma_cleaned.csv') %>%
   mutate(pollutant = purrr::map(name, assign_pollutant)) %>% 
   rename(geography_id = geo_entity_id) %>% 
   inner_join(., poverty_df, by = "geography_id")
+
+mold_df = readr::read_csv('./Data/Mold.csv') %>% 
+  janitor::clean_names() %>% 
+  filter(str_detect(geo_type_name, "UHF") == T) %>% 
+  mutate(geography_id = as.integer(geography_id)) %>% 
+  select(borough, geography_id, percent)
+
 ```
 
 
@@ -74,16 +81,6 @@ renderPlotly({
 
 ### Chart 2    
 ```{r, echo=F}
-renderPlotly({
-  asthma_df %>%
-    filter(pollutant == input$pollutant_choice) %>% 
-    plot_ly(x = ~percent, y = ~data_valuemessage, color = ~borough,
-            type = "scatter", marker = list(size = 8),
-            text = ~geo_entity_name) %>% 
-    layout(title = 
-             "Pollutant concentrations among NYC neighborhoods by poverty level",
-           xaxis = list(title = "Proportion of population in poverty (%)"),
-           yaxis = list(title = "Pollutant concentration (Total emissions/km2)"))
-})
+
 ```
     
