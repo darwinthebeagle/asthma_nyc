@@ -45,7 +45,6 @@ mold_df = readr::read_csv('./Data/Mold.csv') %>%
   filter(str_detect(geo_type_name, "UHF") == T) %>% 
   mutate(geography_id = as.integer(geography_id)) %>% 
   select(borough, geography_id, percent)
-
 ```
 
 
@@ -77,10 +76,5 @@ renderPlotly({
            xaxis = list(title = "Proportion of population in poverty (%)"),
            yaxis = list(title = "Pollutant concentration (Total emissions/km2)"))
 })
-```
-
-### Chart 2    
-```{r, echo=F}
-
 ```
     
