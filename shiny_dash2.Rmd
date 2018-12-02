@@ -71,5 +71,19 @@ renderPlotly({
            yaxis = list(title = "Pollutant concentration (Total emissions/km2)"))
 })
 ```
-    
+
+### Chart 2    
+```{r, echo=F}
+renderPlotly({
+  asthma_df %>%
+    filter(pollutant == input$pollutant_choice) %>% 
+    plot_ly(x = ~percent, y = ~data_valuemessage, color = ~borough,
+            type = "scatter", marker = list(size = 8),
+            text = ~geo_entity_name) %>% 
+    layout(title = 
+             "Pollutant concentrations among NYC neighborhoods by poverty level",
+           xaxis = list(title = "Proportion of population in poverty (%)"),
+           yaxis = list(title = "Pollutant concentration (Total emissions/km2)"))
+})
+```
     
