@@ -1,9 +1,9 @@
 ---
-title: "About"
+title: <center> <h1>**Asthma and Pollution Across New York City Neighborhoods**</h1> </center>
+output:
+  html_document
 ---
 
-### About this site
+<center><img src=""></center>
 
-Sometimes you need to say a bit about the site -- how it was made, where it's hosted, where the source code can be found. 
-
-If this is for a project or analysis, I recommend giving some details about the R package versions that you used to create the content.
+<center> <h3>Darwin Keung | Felix Tran | Jessie Wong | Vince  Tam</h3> </center>

@@ -1,13 +1,16 @@
-name: "Yay internet!"
+name: "Navigation"
 output_dir: "."
 navbar:
   title: "Home"
   right:
-    - text: "About"
+    - text: "Home"
       href: about.html
     - icon: fa-envelope fa-lg
-      href: mailto:<you@youremail.com>
+      href: mailto:<jw3597@cumc.columbia.edu>
     - icon: fa-github fa-lg
-      href: http://github.com/<YOUR_GH_NAME>/
+      href: http://github.com/
+    - text: "Plotly"
+      href: flexdashboard.html
+
 output:
-  html_document
+  html_document 
