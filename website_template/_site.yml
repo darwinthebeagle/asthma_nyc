@@ -9,6 +9,8 @@ navbar:
       href: mailto:<jw3597@cumc.columbia.edu>
     - icon: fa-github fa-lg
       href: https://github.com/darwinthebeagle/asthma_nyc
+    - text: Pollution Densities
+      href: plotly.html    
     - text: Shiny
       href: shiny_dashboard.html
     - text: Shinier
