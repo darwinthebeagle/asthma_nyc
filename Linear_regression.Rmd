@@ -15,22 +15,29 @@ library(readr)
 ```
 
 ```{r}
-poverty_pm_df <- readr::read_csv('./Data/pm_and_poverty_09-13.csv') %>% 
+poverty_df <- readr::read_csv('./Data/pm_and_poverty_09-13.csv') %>% 
   janitor::clean_names() %>% 
   filter(str_detect(geo_type_name, "UHF") == T) %>% 
-  filter(measure %in% c("Percent", "Mean")) %>% 
+  filter(measure == "Percent") %>%
+  filter(name == "Poverty") %>% 
   mutate(geography_id = as.integer(geo_entity_id)) %>% 
-  select(geography_id, data_value)
+  rename(poverty_rate = data_value) %>% 
+  select(geography_id, poverty_rate)
+
+pm_df <- readr::read_csv('./Data/pm_and_poverty_09-13.csv') %>% 
+  janitor::clean_names() %>% 
+  filter(str_detect(geo_type_name, "UHF") == T) %>% 
+  filter(measure == "Mean") %>%
+  filter(str_detect(name, "PM") == T) %>% 
+  mutate(geography_id = as.integer(geo_entity_id)) %>% 
+  group_by(geography_id) %>% 
+  summarize(pm_level = round(mean(data_value), digits = 1))
 
 asthma_df <- readr::read_csv('./Data/nyc_asthma_cleaned.csv') %>% 
   janitor::clean_names() %>% 
   filter(str_detect(geo_type_name, "UHF") == T) %>% 
-  filter(str_detect(name, "PM") == T) %>% 
+  filter(str_detect(name, "PM2.5-Attributable") == T) %>% 
   rename(geography_id = geo_entity_id) %>% 
-  inner_join(., poverty_pm_df, by = "geography_id")
-
-
-
-
+  inner_join(., poverty_df, pm_df, by = "geography_id")
 ```
 
