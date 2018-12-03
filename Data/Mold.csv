@@ -1,0 +1,49 @@
+Year,GeoTypeName,Borough,Geography,Geography ID,Indicator Name,Number,Percent,Notes Number,Notes Percent
+2012,Citywide,New York City, New York City,1,Adults Reporting Mold in the Home,"598,000",9.5,,
+2012,Borough,Bronx, Bronx,1,Adults Reporting Mold in the Home,"128,000",12.9,,
+2012,Borough,Brooklyn, Brooklyn,2,Adults Reporting Mold in the Home,"197,000",10.5,,
+2012,Borough,Manhattan, Manhattan,3,Adults Reporting Mold in the Home,"103,000",8,,
+2012,Borough,Queens, Queens,4,Adults Reporting Mold in the Home,"151,000",8.6,,
+2012,Borough,Staten Island, Staten Island,5,Adults Reporting Mold in the Home,"19,000",5.5,,
+2012,Neighborhood (UHF 34),Queens, Bayside Little Neck-Fresh Meadows,404406,Adults Reporting Mold in the Home,,,**Estimate is supressed due to insufficient data.,**Estimate is supressed due to insufficient data.
+2012,Neighborhood (UHF 34),Brooklyn, Bedford Stuyvesant - Crown Heights,203,Adults Reporting Mold in the Home,"22,000",9.4,,
+2012,Neighborhood (UHF 34),Brooklyn, Bensonhurst - Bay Ridge,209,Adults Reporting Mold in the Home,"20,000",13,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Brooklyn, Borough Park,206,Adults Reporting Mold in the Home,"23,000",10.4,,
+2012,Neighborhood (UHF 34),Brooklyn, Canarsie - Flatlands,208,Adults Reporting Mold in the Home,"12,000",8.2,,
+2012,Neighborhood (UHF 34),Manhattan, Central Harlem - Morningside Heights,302,Adults Reporting Mold in the Home,"10,000",9.1,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Manhattan, Chelsea-Village,306308,Adults Reporting Mold in the Home,"7,000",3.5,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Brooklyn, Coney Island - Sheepshead Bay,210,Adults Reporting Mold in the Home,"22,000",10,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Brooklyn, Downtown - Heights - Slope,202,Adults Reporting Mold in the Home,"13,000",7.6,,
+2012,Neighborhood (UHF 34),Brooklyn, East Flatbush - Flatbush,207,Adults Reporting Mold in the Home,"26,000",11.8,,
+2012,Neighborhood (UHF 34),Manhattan, East Harlem,303,Adults Reporting Mold in the Home,"5,000",7,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Brooklyn, East New York,204,Adults Reporting Mold in the Home,"14,000",10.9,,
+2012,Neighborhood (UHF 34),Queens, Flushing - Clearview,403,Adults Reporting Mold in the Home,"11,000",5.4,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Bronx, Fordham - Bronx Pk,103,Adults Reporting Mold in the Home,"33,000",18.7,,
+2012,Neighborhood (UHF 34),Brooklyn, Greenpoint,201,Adults Reporting Mold in the Home,"16,000",16,,
+2012,Neighborhood (UHF 34),Queens, Jamaica,408,Adults Reporting Mold in the Home,"25,000",11.6,,
+2012,Neighborhood (UHF 34),Bronx, Kingsbridge - Riverdale,101,Adults Reporting Mold in the Home,"6,000",8.4,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Queens, Long Island City - Astoria,401,Adults Reporting Mold in the Home,"12,000",6.9,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Bronx, Northeast Bronx,102,Adults Reporting Mold in the Home,"13,000",8.9,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Staten Island, Northern SI,501502,Adults Reporting Mold in the Home,"13,000",9.5,,
+2012,Neighborhood (UHF 34),Bronx, Pelham - Throgs Neck,104,Adults Reporting Mold in the Home,"30,000",14.4,,
+2012,Neighborhood (UHF 34),Queens, Ridgewood - Forest Hills,405,Adults Reporting Mold in the Home,"13,000",7.1,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Queens, Rockaways,410,Adults Reporting Mold in the Home,"11,000",13.9,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Bronx, South Bronx,105106107,Adults Reporting Mold in the Home,"43,000",11.8,,
+2012,Neighborhood (UHF 34),Queens, Southeast Queens,409,Adults Reporting Mold in the Home,"14,000",8.9,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Staten Island, Southern SI,503504,Adults Reporting Mold in the Home,"6,000",3,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Queens, Southwest Queens,407,Adults Reporting Mold in the Home,"17,000",8.6,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Brooklyn, Sunset Park,205,Adults Reporting Mold in the Home,"7,000",7.6,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Manhattan, Union Square-Lower Manhattan,309310,Adults Reporting Mold in the Home,"12,000",6,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Manhattan, Upper East Side-Gramercy,305307,Adults Reporting Mold in the Home,"18,000",5.8,,
+2012,Neighborhood (UHF 34),Manhattan, Upper West Side,304,Adults Reporting Mold in the Home,"12,000",6.9,*Estimate is based on small numbers so should be interpreted with caution.,*Estimate is based on small numbers so should be interpreted with caution.
+2012,Neighborhood (UHF 34),Manhattan, Washington Heights,301,Adults Reporting Mold in the Home,"33,000",17.2,,
+2012,Neighborhood (UHF 34),Queens, West Queens,402,Adults Reporting Mold in the Home,"38,000",10.8,,
+2012,Neighborhood (UHF 34),Brooklyn, Williamsburg - Bushwick,211,Adults Reporting Mold in the Home,"18,000",12.2,,
+,,,,,,,,,
+Name:Adults Reporting Mold in the Home,Measure:Number,How Calculated:Estimated number of adults reporting damp spots or mold in at least one room in their building excluding the bathroom in the past 30 days.,Source(s):New York City Community Health,Year:2012,,,,,
+Name:Adults Reporting Mold in the Home,Measure:Percent,How Calculated:Estimated number of adults reporting damp spots or mold in at least one room in their building excluding the bathroom in the past 30 days expressed as a percent.,Source(s):New York City Community Health,Year:2012,,,,,
+,,,,,,,,,
+NYC Department of Health and Mental Hygiene,,,,,,,,,
+Environment & Health Data Portal,,,,,,,,,
+More information can be found at: http://nyc.gov/health/tracking,,,,,,,,,
+Accessed 12/02/2018,,,,,,,,,
