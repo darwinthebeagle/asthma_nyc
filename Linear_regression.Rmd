@@ -5,6 +5,9 @@ date: "December 2, 2018"
 output: html_document
 ---
 
+This file runs a linear regression on PM 2.5-attributable ED visits among NYC
+neighborhoods by PM 2.5 levels and neighborhood poverty.
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
@@ -13,6 +16,8 @@ library(mgcv)
 library(purrr)
 library(readr)
 ```
+
+# Cleaning the data
 
 ```{r}
 poverty_df <- readr::read_csv('./Data/pm_and_poverty_09-13.csv') %>% 
@@ -31,13 +36,26 @@ pm_df <- readr::read_csv('./Data/pm_and_poverty_09-13.csv') %>%
   filter(str_detect(name, "PM") == T) %>% 
   mutate(geography_id = as.integer(geo_entity_id)) %>% 
   group_by(geography_id) %>% 
-  summarize(pm_level = round(mean(data_value), digits = 1))
+  summarize(pm_level = round(mean(data_value), digits = 3))
 
 asthma_df <- readr::read_csv('./Data/nyc_asthma_cleaned.csv') %>% 
   janitor::clean_names() %>% 
   filter(str_detect(geo_type_name, "UHF") == T) %>% 
-  filter(str_detect(name, "PM2.5-Attributable") == T) %>% 
+  filter(str_detect(name, "PM2.5-Attributable Asthma ED") == T) %>% 
+  filter(year_description == '2009-2011') %>% 
   rename(geography_id = geo_entity_id) %>% 
-  inner_join(., poverty_df, pm_df, by = "geography_id")
+  distinct() %>% 
+  inner_join(., poverty_df, by = "geography_id") %>% 
+  inner_join(., pm_df, by = "geography_id") %>% 
+  select(-c(indicator_data_id, indicator_id, name, geo_type_name, 
+            year_description)) %>% 
+  spread(key = measure, value = data_valuemessage) %>% 
+  janitor::clean_names() %>% 
+  rename(child_rate = rate_children_0_to_17_yrs_old,
+         adult_rate = rate_18_yrs_and_older)
+```
+
+```{r}
+
 ```
 
