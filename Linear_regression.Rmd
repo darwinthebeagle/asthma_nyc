@@ -8,6 +8,31 @@ output: html_document
 This file runs a linear regression on PM 2.5-attributable ED visits among NYC
 neighborhoods by PM 2.5 levels and neighborhood poverty.
 
+# The regression model
+
+(Neighborhood rate of PM 2.5-attributable ED visits per 100,000 people) = 
+(Intercept) + (Average micrograms of PM 2.5 per cubic meter of air) +
+(% of people in neighborhood living in poverty)
+
+# The data
+
+### Rate of PM 2.5-attributable ED visits per 100,000
+Rates of ED visits were obtained from NYC Open Data for the timeframe 2009-2011. 
+Rates were reported for children 0-17 years old and adults 18 years and older by
+neighborhood. 
+
+### PM 2.5 air pollution
+Measures of PM 2.5 air pollution were obtained from the NYC Environment and
+Health Data Portal. Measures cover the timeframe 2009-2011.
+
+### Neighborhood poverty
+Measure of neighborhood poverty were obtained from the NYC Environment and 
+Health Data Portal. Measure cover the timeframe 2009-2013. This is the smallest
+timeframe in which a neighborhood-level poverty rate can be estimated. Although
+this timeframe does not exactly match the timeframe of the other variables, we
+believe this estimate is not too far off from the true rate of poverty in NYC
+neighborhoods for 2009-2011. 
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
@@ -55,7 +80,61 @@ asthma_df <- readr::read_csv('./Data/nyc_asthma_cleaned.csv') %>%
          adult_rate = rate_18_yrs_and_older)
 ```
 
-```{r}
+# Regression on adult ED visits
+```{r, echo = F}
+calc_lower_ci <- function(beta, stnd.error) {
+  lower = round(beta - (1.96 * stnd.error), digits = 2)
+  lower
+}
 
+calc_upper_ci <- function(beta, stnd.error) {
+  lower = round(beta + (1.96 * stnd.error), digits = 2)
+  lower
+}
+
+adult_reg_df <- lm(data = asthma_df, adult_rate ~ poverty_rate + pm_level) %>% 
+  broom::tidy() %>% 
+  mutate(upper_ci = calc_upper_ci(estimate, std.error),
+         lower_ci = calc_lower_ci(estimate, std.error),
+         ci = str_c(lower_ci, upper_ci, sep = " to "),
+         p.value = round(p.value, digits = 3)) %>% 
+  select(term, estimate, ci, p.value)
+
+adult_reg_df %>% 
+  knitr::kable(col.names = c("Term", "Beta coefficient", 
+                             "95% CI", "P-value"),
+               format = "html",
+               caption = "Rates of PM 2.5-attributable adult ED visits among NYC
+               neighborhoods in 2009-2011 by PM 2.5 levels and 
+               neighborhood poverty",
+               align = 'c')
 ```
 
+# Regression on child ED visits
+```{r, echo = F}
+child_reg_df <- lm(data = asthma_df, child_rate ~ poverty_rate + pm_level) %>% 
+  broom::tidy() %>% 
+  mutate(upper_ci = calc_upper_ci(estimate, std.error),
+         lower_ci = calc_lower_ci(estimate, std.error),
+         ci = str_c(lower_ci, upper_ci, sep = " to "),
+         p.value = round(p.value, digits = 3)) %>% 
+  select(term, estimate, ci, p.value)
+
+child_reg_df %>% 
+  knitr::kable(col.names = c("Term", "Beta coefficient", 
+                             "95% CI", "P-value"),
+               format = "html",
+               caption = "Rates of PM 2.5-attributable child ED visits among NYC
+               neighborhoods in 2009-2011 by PM 2.5 levels and 
+               neighborhood poverty",
+               align = 'c')
+```
+
+# Comments
+For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air
+pollution do not appear to have a significant effect. Rather, neighborhood 
+poverty is strongly associated with ED visits. For every 1% increase in the 
+proportion of people living in poverty in a particular neighborhood, that
+neighborhood on average experiences an increase of 3.46 ED visits for 
+PM 2.5-attributable asthma per every 100,000 adults and an increase of 5.66
+ED visits for PM 2.5-attributable asthma per every 100,000 children. 
