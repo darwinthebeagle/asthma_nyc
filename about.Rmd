@@ -20,7 +20,7 @@ output:
 
 Asthma is a major public health concern both in New York City and nationally across the United States. According to CDC's Behaviorial Risk Factor Surveillance System (BRFSS) data in 2012, approximately 1.4 million New York adults and 314,000 children (under the age of 18) reported having asthma. While data has shown that in the last 10 years, annual asthma related deaths have decreased significantly by over 20%, the disparities in air quality and asthma rates across neighborhoods should be addressed. 
 
-The objective of our project is to further understand the air quality across the different neighborhoods in New York City, through looking at different pollutants and their levels. In addition, we hope to explore the relationship between air quality, poverty, and asthma-related health outcomes.    
+The objective of our project is to further understand the air quality across the different neighborhoods in New York City, through looking at different pollutants and their levels. There are multiple air exposures both outdoor and indoor that can in combination, exacerbate asthma conditions and prevalence among different groups, particularly vulnerable children and elderly. In addition, we hope to explore the relationship between air quality, poverty, and asthma-related health outcomes.    
 
 # Data Source
 
@@ -54,6 +54,8 @@ After visualizing the distribution pollutants across neighborhoods, a linear reg
 # Conclusions
 Pollutant Distribution: 
 
+Air Pollutants: 
+Across all the boroughs, Manhattan has the widest 
 
 Linear Regression Results: 
 
