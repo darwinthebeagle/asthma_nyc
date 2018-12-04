@@ -24,7 +24,8 @@ neighborhood_mold_data =
   filter(Neighborhood != "Bayside Little Neck-Fresh Meadows") %>% 
   mutate(Borough = as.factor(Borough)) %>% 
   select(Neighborhood, Number, Percent, Borough) %>%
-  ggplot(aes(fct_reorder(Neighborhood, Number), Number)) +
+  mutate(Neighborhood = fct_reorder(Neighborhood, Number)) %>%
+  ggplot(aes(x = Neighborhood, y = Number), color = Borough) +
   geom_point(aes(color = factor(Borough))) +
   labs(
     title = "Number of Mold Complaints per NYC Neighborhood",
