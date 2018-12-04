@@ -1,0 +1,30 @@
+---
+title: "Mold and Asthma"
+author: "Vincent Tam"
+date: "December 2, 2018"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(janitor)
+library(ggplot2)
+
+mold_data = read.csv(file = "./Data/Separated_Columns_Mold_2012.csv")
+asthma_data = read.csv(file = "./Data/Asthma_Numbers_2012.csv")
+neighborhood_mold_data = 
+  mold_data %>%
+  select(Neighborhood, Number, Percent) %>%
+  filter(Neighborhood != "Bayside Little Neck-Fresh Meadows") 
+mold_plot = 
+  neighborhood_mold_data %>% 
+  ggplot(aes(fct_reorder(Neighborhood, Number), Number)) +
+  geom_point() +
+  labs(
+    title = "Number of Mold Complaints per NYC Neighborhood",
+    x = "Neighborhood",
+    y = "Mold Complaints"
+  )  +
+  theme(axis.text.x = element_text(angle = 90)) 
+
+```

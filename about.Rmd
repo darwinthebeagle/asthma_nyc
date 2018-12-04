@@ -20,7 +20,7 @@ output:
 
 Asthma is a major public health concern both in New York City and nationally across the United States. According to CDC's Behaviorial Risk Factor Surveillance System (BRFSS) data in 2012, approximately 1.4 million New York adults and 314,000 children (under the age of 18) reported having asthma. While data has shown that in the last 10 years, annual asthma related deaths have decreased significantly by over 20%, the disparities in air quality and asthma rates across neighborhoods should be addressed. 
 
-The objective of our project is to further understand the air quality across the different neighborhoods in New York City, through looking at different pollutants and their levels. In addition, we hope to explore the relationship between air quality, poverty, and asthma-related health outcomes.    
+The objective of our project is to further understand the air quality across the different neighborhoods in New York City, through looking at different pollutants and their levels. There are multiple air exposures both outdoor and indoor that can in combination, exacerbate asthma conditions and prevalence among different groups, particularly vulnerable children and elderly. In addition, we hope to explore the relationship between air quality, poverty, and asthma-related health outcomes.    
 
 # Data Source
 
@@ -28,13 +28,15 @@ The data was obtained from the [NYC Environment & Health Data Portal](http://a81
 
 The New York City neighborhood boundaries were defined by the [United Hospital Fund Neighorhood Index](http://a816-dohbesp.nyc.gov/IndicatorPublic/EPHTPDF/uhf42.pdf). There are a total of 42 neighorboods across the 5 boroughs—Bronx, Staten Island, Queens, Manhattan, and Brooklyn.    
 
-From the air quality data, we focused on 5 air quality pollutants:
+From the air quality data, we focused on 5 outdoor air quality pollutants:
 
 - Fine Particulate Matter (PM2.5)
 - Sulfur Dioxide (SO2)
 - Benzene
 - Formaldehyde
 - Nitrogen Oxide (NOx)
+
+In addition to outdoor air pollutants, we wanted to explore the indoor exposure to mold that may contribute to the prevalence of asthma. Data collected from the New York City Community Health Survey of the percentage of adults reporting mold in their homes were used. The percentages were collected and calculated based off the number of adults reporting damp spots or mold in at least one room in their building, excluding the bathroom, in the past 30 days. 
 
 The 3 health outcomes of interest are asthma-related ED visits, hospitalizations, and deaths for adults and for children (under the age of 18).
 
@@ -44,10 +46,25 @@ Research questions that we were interested in exploring in our analyses:
 1) What is the distribution of asthma rates across neighborhoods?
 2) What is the relationship between pollution levels and the poverty level of the neighborhood? 
 3) How do the rates of asthma-related ED visits, hospitalizations, and deaths between different neighborhoods compare? Are there any indication of disparities?
-4)
-5)
+4) What is the impact of the collective exposure to high levels of all the pollutants in comparison to exposure to them individually?
+5) How does the indoor exposure to mold compare to the outdoor pollution exposure?
+
+After visualizing the distribution pollutants across neighborhoods, a linear regression is performed on PM 2.5-attributable ED visits among NYC neighborhoods by PM 2.5 levels and neighborhood poverty.
 
 # Conclusions
+Pollutant Distribution: 
 
+Air Pollutants: 
+Based on our density plots found in the **Pollution Density** tab, we see varying distribution of the different outdoor air pollutants. Among the different boroughs, Queens and Staten Island remain on the lower end of the concentration levels for all 5 pollutants examined. Manhattan had the widest distribution of concentration levels, illustrating that there is a wider spectrum of high pollutation levels in certain neighborhoods and low levels in others. Bronx and Brooklyn's pollution levels stayed in the middle ranges in comparison to the other boroughs, however, there is significant peaking for certain pollutants, including Benzene for Bronx.   
+
+Linear Regression Results: 
+
+For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air
+pollution do not appear to have a significant effect. Rather, neighborhood 
+poverty is strongly associated with ED visits. For every 1% increase in the 
+proportion of people living in poverty in a particular neighborhood, that
+neighborhood on average experiences an increase of 3.46 ED visits for 
+PM 2.5-attributable asthma per every 100,000 adults and an increase of 5.66
+ED visits for PM 2.5-attributable asthma per every 100,000 children. 
 
 
