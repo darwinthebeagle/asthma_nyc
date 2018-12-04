@@ -49,7 +49,20 @@ Research questions that we were interested in exploring in our analyses:
 4) What is the impact of the collective exposure to high levels of all the pollutants in comparison to exposure to them individually?
 5) How does the indoor exposure to mold compare to the outdoor pollution exposure?
 
-# Conclusions
+After visualizing the distribution pollutants across neighborhoods, a linear regression is performed on PM 2.5-attributable ED visits among NYC neighborhoods by PM 2.5 levels and neighborhood poverty.
 
+# Conclusions
+Pollutant Distribution: 
+
+
+Linear Regression Results: 
+
+For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air
+pollution do not appear to have a significant effect. Rather, neighborhood 
+poverty is strongly associated with ED visits. For every 1% increase in the 
+proportion of people living in poverty in a particular neighborhood, that
+neighborhood on average experiences an increase of 3.46 ED visits for 
+PM 2.5-attributable asthma per every 100,000 adults and an increase of 5.66
+ED visits for PM 2.5-attributable asthma per every 100,000 children. 
 
 

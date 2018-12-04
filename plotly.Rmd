@@ -2,6 +2,7 @@
 title: "Outdoor Air Pollutants Across New York City Boroughs"
 output:
   flexdashboard::flex_dashboard:
+    orientation: columns
     vertical_layout: scroll
 ---
 
@@ -10,6 +11,7 @@ library(tidyverse)
 library(viridis)
 library(flexdashboard)
 library(plotly)
+
 
 asthma_df <- readr::read_csv('./Data/nyc_asthma_cleaned.csv')
 mold_data <- read.csv(file = "./Data/Separated_Columns_Mold_2012.csv")
@@ -129,6 +131,5 @@ neighborhood_mold_data =
 
 ggplotly(neighborhood_mold_data)
 ```
-
 
 rmarkdown::render("plotly.Rmd", output_format = "flex_dashboard")

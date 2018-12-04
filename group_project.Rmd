@@ -9,7 +9,7 @@ output: github_document
 library(tidyverse)
 library(janitor)
 library(ggplot2)
-getwd()
+
 mold_data = read.csv(file = "./Data/Separated_Columns_Mold_2012.csv")
 asthma_data = read.csv(file = "./Data/Asthma_Numbers_2012.csv")
 neighborhood_mold_data = 
@@ -26,5 +26,5 @@ mold_plot =
     y = "Mold Complaints"
   )  +
   theme(axis.text.x = element_text(angle = 90)) 
-mold_plot
+
 ```
