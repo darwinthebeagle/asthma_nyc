@@ -11,7 +11,9 @@ library(viridis)
 library(flexdashboard)
 library(plotly)
 
-asthma_df <- readr::read_csv('./Data/Air_Quality.csv')
+asthma_df <- readr::read_csv('./Data/nyc_asthma_cleaned.csv')
+mold_data <- read.csv(file = "./Data/Separated_Columns_Mold_2012.csv")
+asthma_data <- read.csv(file = "./Data/Asthma_Numbers_2012.csv")
 
 asthma_clean = asthma_df %>%
   mutate(geo_entity_id = as.factor(geo_entity_id),
@@ -110,4 +112,23 @@ NO2_dens = asthma_clean %>%
 ggplotly(NO2_dens)
 ```
 
-rmarkdown::render("flexdashboard.Rmd", output_format = "flex_dashboard")
+```{r}
+
+neighborhood_mold_data = 
+  mold_data %>%
+  select(Neighborhood, Number, Percent) %>%
+  filter(Neighborhood != "Bayside Little Neck-Fresh Meadows") %>% 
+  ggplot(aes(fct_reorder(Neighborhood, Number), Number)) +
+  geom_point() +
+  labs(
+    title = "Number of Mold Complaints per NYC Neighborhood",
+    x = "Neighborhood",
+    y = "Mold Complaints"
+  )  +
+  theme(axis.text.x = element_text(angle = 90)) 
+
+ggplotly(neighborhood_mold_data)
+```
+
+
+rmarkdown::render("plotly.Rmd", output_format = "flex_dashboard")
