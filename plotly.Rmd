@@ -1,9 +1,8 @@
 ---
-title: "Outdoor Air Pollutants Across New York City Boroughs"
+title: "Indoor and Outdoor Air Pollutants Across New York City Boroughs"
 output:
   flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: scroll
+    orientation: rows
 ---
 
 ```{r setup, include=FALSE}
@@ -11,7 +10,6 @@ library(tidyverse)
 library(viridis)
 library(flexdashboard)
 library(plotly)
-
 
 asthma_df <- readr::read_csv('./Data/nyc_asthma_cleaned.csv')
 mold_data <- read.csv(file = "./Data/Separated_Columns_Mold_2012.csv")
@@ -22,29 +20,13 @@ asthma_clean = asthma_df %>%
          Borough = recode(geo_entity_id, "101" = "Bronx", "102" = "Bronx", "103" = "Bronx", "104" = "Bronx", "105" = "Bronx", "106" = "Bronx", "107" = "Bronx", "201" = "Brooklyn", "202" = "Brooklyn", "203" = "Brooklyn", "204" = "Brooklyn", "205" = "Brooklyn", "206" = "Brooklyn", "207" = "Brooklyn", "208" = "Brooklyn", "209" = "Brooklyn", "210" = "Brooklyn", "211" = "Brooklyn", "301" = "Manhattan", "302" = "Manhattan", "303" = "Manhattan", "304" = "Manhattan", "305" = "Manhattan", "306" = "Manhattan", "307" = "Manhattan", "308" = "Manhattan", "309" = "Manhattan", "310" = "Manhattan", "401" = "Queens", "402" = "Queens", "403" = "Queens", "404" = "Queens", "405" = "Queens", "406" = "Queens", "407" = "Queens", "408" = "Queens", "409" = "Queens", "410" = "Queens", "501" = "Staten Island", "502" = "Staten Island", "503" = "Staten Island", "504" = "Staten Island")) %>%
   filter(geo_type_name == "UHF42") %>%
   rename(value = data_valuemessage)
+
 ```
 
-Column {data-width=650}
+Row {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A : Total SO2 Emissions 
-
-```{r}
-SO2 = asthma_clean %>% 
-  filter(name == "Boiler Emissions- Total SO2 Emissions") %>%
-  group_by(Borough) %>%
-  ggplot(aes(x = value, fill = Borough)) +
-  geom_density(alpha = 0.5) +
-  labs(x = "Total SO2 Emissions (per km2)",
-       y = "Density") + 
-  scale_color_viridis() +
-  coord_cartesian() +
-  theme_classic()
-
-ggplotly(SO2)
-```
-
-### Chart B : Average Benzene Concentrations
+### Chart A : Average Benzene Concentrations
 
 ```{r}
 benz = asthma_clean %>% 
@@ -61,8 +43,23 @@ benz = asthma_clean %>%
 ggplotly(benz)
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
+### Chart B : Total SO2 Emissions 
+
+```{r}
+SO2 = asthma_clean %>% 
+  filter(name == "Boiler Emissions- Total SO2 Emissions") %>%
+  group_by(Borough) %>%
+  ggplot(aes(x = value, fill = Borough)) +
+  geom_density(alpha = 0.5) +
+  labs(x = "Total SO2 Emissions (per km2)",
+       y = "Density") + 
+  scale_color_viridis() +
+  coord_cartesian() +
+  theme_classic()
+
+ggplotly(SO2)
+```
+
 ### Chart C : Average Formaldehyde Concentrations
 
 ```{r}
@@ -79,6 +76,9 @@ Formaldehyde = asthma_clean %>%
 
 ggplotly(Formaldehyde)
 ```
+
+Row {data-width=650}
+-----------------------------------------------------------------------
 
 ### Chart D : Total PM2.5 Emissions
 
@@ -112,24 +112,6 @@ NO2_dens = asthma_clean %>%
   theme_classic()
 
 ggplotly(NO2_dens)
-```
-
-```{r}
-
-neighborhood_mold_data = 
-  mold_data %>%
-  select(Neighborhood, Number, Percent) %>%
-  filter(Neighborhood != "Bayside Little Neck-Fresh Meadows") %>% 
-  ggplot(aes(fct_reorder(Neighborhood, Number), Number)) +
-  geom_point() +
-  labs(
-    title = "Number of Mold Complaints per NYC Neighborhood",
-    x = "Neighborhood",
-    y = "Mold Complaints"
-  )  +
-  theme(axis.text.x = element_text(angle = 90)) 
-
-ggplotly(neighborhood_mold_data)
 ```
 
 rmarkdown::render("plotly.Rmd", output_format = "flex_dashboard")

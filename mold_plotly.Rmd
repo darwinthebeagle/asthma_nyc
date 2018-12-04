@@ -1,0 +1,38 @@
+---
+title: "Mold in Homes Report Across New York City Boroughs"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: rows
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(viridis)
+library(flexdashboard)
+library(plotly)
+
+asthma_df <- readr::read_csv('./Data/nyc_asthma_cleaned.csv')
+mold_data <- read.csv(file = "./Data/Separated_Columns_Mold_2012.csv")
+asthma_data <- read.csv(file = "./Data/Asthma_Numbers_2012.csv")
+```
+
+### Number of Mold Complaints per NYC Neighborhood
+
+```{r}
+neighborhood_mold_data = 
+  mold_data %>%
+  select(Neighborhood, Number, Percent) %>%
+  filter(Neighborhood != "Bayside Little Neck-Fresh Meadows") %>% 
+  ggplot(aes(fct_reorder(Neighborhood, Number), Number)) +
+  geom_point() +
+  labs(
+    title = "Number of Mold Complaints per NYC Neighborhood",
+    x = "Neighborhood",
+    y = "Mold Complaints"
+  )  +
+  theme(axis.text.x = element_text(angle = 90)) 
+
+ggplotly(neighborhood_mold_data)
+```
+
+rmarkdown::render("mold_plotly.Rmd", output_format = "flex_dashboard")
