@@ -13,6 +13,7 @@ library(tidyverse)
 library(viridis)
 library(plotly)
 library(stringr)
+library(shiny)
 ```
 
 ```{r, include = F}
