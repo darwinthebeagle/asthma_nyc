@@ -55,7 +55,7 @@ After visualizing the distribution pollutants across neighborhoods, a linear reg
 Pollutant Distribution: 
 
 Air Pollutants: 
-Across all the boroughs, Manhattan has the widest 
+Based on our density plots found in the **Pollution Density** tab, we see varying distribution of the different outdoor air pollutants. Among the different boroughs, Queens and Staten Island remain on the lower end of the concentration levels for all 5 pollutants examined. Manhattan had the widest distribution of concentration levels, illustrating that there is a wider spectrum of high pollutation levels in certain neighborhoods and low levels in others. Bronx and Brooklyn's pollution levels stayed in the middle ranges in comparison to the other boroughs, however, there is significant peaking for certain pollutants, including Benzene for Bronx.   
 
 Linear Regression Results: 
 

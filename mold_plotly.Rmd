@@ -21,10 +21,11 @@ asthma_data <- read.csv(file = "./Data/Asthma_Numbers_2012.csv")
 ```{r}
 neighborhood_mold_data = 
   mold_data %>%
-  select(Neighborhood, Number, Percent) %>%
   filter(Neighborhood != "Bayside Little Neck-Fresh Meadows") %>% 
+  mutate(Borough = as.factor(Borough)) %>% 
+  select(Neighborhood, Number, Percent, Borough) %>%
   ggplot(aes(fct_reorder(Neighborhood, Number), Number)) +
-  geom_point() +
+  geom_point(aes(color = factor(Borough))) +
   labs(
     title = "Number of Mold Complaints per NYC Neighborhood",
     x = "Neighborhood",
