@@ -49,22 +49,11 @@ Research questions that we were interested in exploring in our analyses:
 4) What is the impact of the collective exposure to high levels of all the pollutants in comparison to exposure to them individually?
 5) How does the indoor exposure to mold compare to the outdoor pollution exposure?
 
-After visualizing the distribution pollutants across neighborhoods, a linear regression is performed on PM 2.5-attributable ED visits among NYC neighborhoods by PM 2.5 levels and neighborhood poverty.
-
-# Conclusions
-Pollutant Distribution: 
-
 Air Pollutants: 
 Based on our density plots found in the **Pollution Density** tab, we see varying distribution of the different outdoor air pollutants. Among the different boroughs, Queens and Staten Island remain on the lower end of the concentration levels for all 5 pollutants examined. Manhattan had the widest distribution of concentration levels, illustrating that there is a wider spectrum of high pollutation levels in certain neighborhoods and low levels in others. Bronx and Brooklyn's pollution levels stayed in the middle ranges in comparison to the other boroughs, however, there is significant peaking for certain pollutants, including Benzene for Bronx.   
 
-Linear Regression Results: 
+After visualizing the distribution pollutants across neighborhoods, a linear regression is performed on PM 2.5-attributable ED visits among NYC neighborhoods by PM 2.5 levels and neighborhood poverty. For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air pollution do not appear to have a significant effect. Rather, neighborhood poverty is strongly associated with ED visits. For every 1% increase in the proportion of people living in poverty in a particular neighborhood, that neighborhood on average experiences an increase of 3.46 ED visits for PM 2.5-attributable asthma per every 100,000 adults and an increase of 5.66 ED visits for PM 2.5-attributable asthma per every 100,000 children. 
 
-For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air
-pollution do not appear to have a significant effect. Rather, neighborhood 
-poverty is strongly associated with ED visits. For every 1% increase in the 
-proportion of people living in poverty in a particular neighborhood, that
-neighborhood on average experiences an increase of 3.46 ED visits for 
-PM 2.5-attributable asthma per every 100,000 adults and an increase of 5.66
-ED visits for PM 2.5-attributable asthma per every 100,000 children. 
+# Conclusions
 
 

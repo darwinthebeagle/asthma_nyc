@@ -163,4 +163,12 @@ renderPlotly({
            yaxis = list(title = 'Rate per 100,000 individuals'), 
            barmode = "group")
 })
+
 ```
+
+rsconnect::setAccountInfo(name='jessiewongus', token='0611C79A041AC17F0DE8015989197F01', secret='Tl+wxVwu6S3IhVOICWpdkLV9SBiWwHipwT1bs70v')
+getwd()
+
+
+library(rsconnect)
+rsconnect::deployApp('./shiny_dashboard.rmd')

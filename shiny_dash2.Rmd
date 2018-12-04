@@ -71,4 +71,4 @@ renderPlotly({
            yaxis = list(title = "Pollutant concentration (Total emissions/km2)"))
 })
 ```
-
+rsconnect::deployApp('./shiny_dash2.rmd')
