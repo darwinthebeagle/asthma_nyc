@@ -46,6 +46,8 @@ Research questions that we were interested in exploring in our analyses:
 1) What is the distribution of asthma rates across neighborhoods?
 2) What is the relationship between pollution levels and the poverty level of the neighborhood? 
 3) How do the rates of asthma-related ED visits, hospitalizations, and deaths between different neighborhoods compare? Are there any indication of disparities?
+4) What is the impact of the collective exposure to high levels of all the pollutants in comparison to exposure to them individually?
+5) How does the indoor exposure to mold compare to the outdoor pollution exposure?
 
 # Conclusions
 
