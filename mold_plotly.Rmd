@@ -1,5 +1,5 @@
 ---
-title: "Mold in Homes Report Across New York City Boroughs"
+title: "Mold in Homes Reports Compared to Asthma Rates Across New York City Boroughs"
 output:
   flexdashboard::flex_dashboard:
     orientation: rows
@@ -14,9 +14,12 @@ library(plotly)
 asthma_df <- readr::read_csv('./Data/nyc_asthma_cleaned.csv')
 mold_data <- read.csv(file = "./Data/Separated_Columns_Mold_2012.csv")
 asthma_data <- read.csv(file = "./Data/Asthma_Numbers_2012.csv")
+
 ```
 
-### Number of Mold Complaints per NYC Neighborhood
+Row {data-width=650}
+-----------------------------------------------------------------------
+### Chart A : Number of Mold Complaints per NYC Neighborhood (2012)
 
 ```{r}
 neighborhood_mold_data = 
@@ -35,6 +38,29 @@ neighborhood_mold_data =
   theme(axis.text.x = element_text(angle = 90)) 
 
 ggplotly(neighborhood_mold_data)
+```
+
+Row {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart B : Asthma Rates Per 10,000 Across NYC Neighborhoods (2012)
+
+```{r}
+mold_asthma = asthma_data %>%
+  janitor::clean_names() %>%
+  mutate(borough = as.factor(borough)) %>% 
+  select(neighborhood, borough, age_adjusted_per_10000) %>%
+  mutate(Neighborhood = fct_reorder(neighborhood, age_adjusted_per_10000)) %>%
+  ggplot(aes(x = Neighborhood, y = age_adjusted_per_10000), color = borough) +
+  geom_point(aes(color = factor(borough))) +
+  labs(
+    title = "Asthma Rates Per 10,000 (Age-Adjusted)",
+    x = "Neighborhood",
+    y = "Rate of Asthma (per 10,000)"
+  )  +
+  theme(axis.text.x = element_text(angle = 90)) 
+
+ggplotly(mold_asthma)
 ```
 
 rmarkdown::render("mold_plotly.Rmd", output_format = "flex_dashboard")
