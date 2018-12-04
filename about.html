@@ -260,7 +260,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Home</a>
+      <a class="navbar-brand" href="index.html"></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -268,7 +268,19 @@ div.tocify {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="about.html">Home</a>
+  <a href="about.html">
+    <span class=" Home"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="plotly.html">Pollution Densities</a>
+</li>
+<li>
+  <a href="shiny_dashboard.html">Shiny</a>
+</li>
+<li>
+  <a href="shiny_dash2.html">Shinier</a>
 </li>
 <li>
   <a href="mailto:&lt;jw3597@cumc.columbia.edu&gt;">
@@ -281,15 +293,6 @@ div.tocify {
     <span class="fa fa-github fa-lg"></span>
      
   </a>
-</li>
-<li>
-  <a href="plotly.html">Pollution Densities</a>
-</li>
-<li>
-  <a href="shiny_dashboard.html">Shiny</a>
-</li>
-<li>
-  <a href="shiny_dash2.html">Shinier</a>
 </li>
       </ul>
     </div><!--/.nav-collapse -->
@@ -330,7 +333,7 @@ Darwin Keung | Felix Tran | Jessie Wong | Vince Tam
 <h1>Data Source</h1>
 <p>The data was obtained from the <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/PublicTracking.aspx">NYC Environment &amp; Health Data Portal</a> and the <a href="https://data.cityofnewyork.us/Environment/Air-Quality/c3uy-2p5r/data">NYC OpenData</a>.</p>
 <p>The New York City neighborhood boundaries were defined by the <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/EPHTPDF/uhf42.pdf">United Hospital Fund Neighorhood Index</a>. There are a total of 42 neighorboods across the 5 boroughs—Bronx, Staten Island, Queens, Manhattan, and Brooklyn.</p>
-<p>From the air quality data, we focused on 5 air quality pollutants:</p>
+<p>From the air quality data, we focused on 5 outdoor air quality pollutants:</p>
 <ul>
 <li>Fine Particulate Matter (PM2.5)</li>
 <li>Sulfur Dioxide (SO2)</li>
@@ -338,6 +341,7 @@ Darwin Keung | Felix Tran | Jessie Wong | Vince Tam
 <li>Formaldehyde</li>
 <li>Nitrogen Oxide (NOx)</li>
 </ul>
+<p>In addition to outdoor air pollutants, we wanted to explore the indoor exposure to mold that may contribute to the prevalence of asthma. Data collected from the New York City Community Health Survey of the percentage of adults reporting mold in their homes were used. The percentages were collected and calculated based off the number of adults reporting damp spots or mold in at least one room in their building, excluding the bathroom, in the past 30 days.</p>
 <p>The 3 health outcomes of interest are asthma-related ED visits, hospitalizations, and deaths for adults and for children (under the age of 18).</p>
 </div>
 <div id="analyses" class="section level1">

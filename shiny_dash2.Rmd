@@ -40,11 +40,18 @@ asthma_df = readr::read_csv('./Data/nyc_asthma_cleaned.csv') %>%
   rename(geography_id = geo_entity_id) %>% 
   inner_join(., poverty_df, by = "geography_id")
 
-mold_df = readr::read_csv('./Data/Mold.csv') %>% 
+
+mold_df = readr::read_csv('./Data/mold_data.csv') %>% 
   janitor::clean_names() %>% 
+  select(borough, percent)
+View(mold_df)
+
+mold_df = readr::read_csv('./Data/nyc_asthma_cleaned.csv') %>% 
   filter(str_detect(geo_type_name, "UHF") == T) %>% 
-  mutate(geography_id = as.integer(geography_id)) %>% 
-  select(borough, geography_id, percent)
+  filter(str_detect(name, "Boiler") == T) %>% 
+  mutate(pollutant = purrr::map(name, assign_pollutant)) %>% 
+  rename(geography_id = geo_entity_id) %>% 
+  inner_join(., poverty_df, by = "geography_id")
 ```
 
 
@@ -77,4 +84,12 @@ renderPlotly({
            yaxis = list(title = "Pollutant concentration (Total emissions/km2)"))
 })
 ```
-    
+
+Column
+----------------------------------------------------------------------
+
+### Chart 2
+```{r}
+
+```
+
