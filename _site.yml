@@ -2,8 +2,6 @@ name: "Navigation"
 output_dir: "."
 navbar:
   right:
-    - icon: "Home"
-      href: about.html
     - text: Pollution Densities
       href: plotly.html   
     - text: Mold Levels
