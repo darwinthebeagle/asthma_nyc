@@ -2,6 +2,7 @@
 title: "Outdoor Air Pollutants Across New York City Boroughs"
 output:
   flexdashboard::flex_dashboard:
+    orientation: columns
     vertical_layout: fill
 ---
 
@@ -67,7 +68,7 @@ benz = asthma_clean %>%
 ggplotly(benz)
 ```
 
-Column {data-width=350}
+Column {data-width=650}
 -----------------------------------------------------------------------
 ### Chart D : Average Formaldehyde Concentrations
 
@@ -110,7 +111,7 @@ NO2_dens = asthma_clean %>%
   ggplot(aes(x = value, fill = Borough)) +
   geom_density(alpha = 0.5) +
   labs(x = "Total NOx Emissions (Per km2)",
-       y = "Concentrations") + 
+       y = "Density") + 
   scale_color_viridis() +
   coord_cartesian() +
   theme_classic()
