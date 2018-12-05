@@ -3,6 +3,7 @@ title: "Mold in Homes Reports Compared to Asthma Rates Across New York City Boro
 output:
   flexdashboard::flex_dashboard:
     orientation: rows
+    vertical_layout: fill
 ---
 
 ```{r setup, include=FALSE}
