@@ -19,7 +19,6 @@ Lastly we should keep in mind the socio-economic factors of asthma. NPR and _All
 [Keet et al. (2015)](https://www.jacionline.org/article/S0091-6749%2814%2901676-5/abstract). Dr. Keet and her collaborators found that even more children had asthma in poor suburban and medium sized towns in other regions of the country. Additionally living in the inner city didn't seem to a risk factor at all for having asthma for children outside of the Northeastern states.Inner cities areas have higher burden of asthma conflated with areas of poverty.That is to say poverty is stronger predictive factor than the location you live in, possibily due to more day to day stress and diet factors that contribute to the weathering of your body and your immune system. 
 
 
-
 Initial questions: What questions are you trying to answer? How did these questions evolve over the course of the project? What new questions did you consider in the course of your analysis?
 
 **Initial questions:**
