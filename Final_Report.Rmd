@@ -31,22 +31,19 @@ Poverty and asthma ED rates correlated?
 Air pollution and asthma correlated?
 (NEW) Mold and asthma correlated in NYC?
 
-----------
-
-Data: Source, scraping method, cleaning, etc.
-
-Sources:  
-
-Data sourced from NYC's Environment & Health Data Portal [Link](http://a816-dohbesp.nyc.gov/IndicatorPublic/PublicTracking.aspx)
-
-----------
-Exploratory analysis: Visualizations, summaries, and exploratory statistical analyses. Justify the steps you took, and show any major changes to your ideas.
+Data Source:
+NYC's Environment & Health Data Portal [Link](http://a816-dohbesp.nyc.gov/IndicatorPublic/PublicTracking.aspx)
 
 
-Additional analysis: If you undertake formal statistical analyses, describe these in detail
+**Exploratory analysis:** Visualizations, summaries, and exploratory statistical analyses. Justify the steps you took, and show any major changes to your ideas.
 
 
-Discussion: What were your findings? Are they what you expect? What insights into the data can you make?
+**Additional analysis:** If you undertake formal statistical analyses, describe these in detail
+
+For our statistical analyses we chose to use a linear regression model as our outcome (asthma rates) is continuous. We looked at poverty and pm2.5 levels by neighborhood for adult and childhood asthma rates.
+
+
+**Discussion:** What were your findings? Are they what you expect? What insights into the data can you make?
 
 Air Pollutants: 
 Based on our density plots found in the Pollution Density tab, we see varying distribution of the different outdoor air pollutants. Among the different boroughs, Queens and Staten Island remain on the lower end of the concentration levels for all 5 pollutants examined. Manhattan had the widest distribution of concentration levels, illustrating that there is a wider spectrum of high pollutation levels in certain neighborhoods and low levels in others. Bronx and Brooklyn's pollution levels stayed in the middle ranges in comparison to the other boroughs, however, there is significant peaking for certain pollutants, including Benzene for Bronx. We expected there the be a more consistent and defined pattern across the different pollutants across boroughs, of boroughs with high and low densities. However this may be attributed to the manner that the pollutant is emitted and the sources. Through exploring the data, we also recognized that there is significant within borough differences and gaps, where certain regions of the borough experience very high densities of pollution and others experience very low, which is surprising considering that they are in close proximity. 
