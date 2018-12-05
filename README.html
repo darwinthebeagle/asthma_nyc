@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="about.html">
+    <span class=" Home"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="plotly.html">Pollution Densities</a>
+</li>
+<li>
+  <a href="mold_plotly.html">Mold Levels</a>
+</li>
+<li>
+  <a href="https://jessiewongus.shinyapps.io/shiny_dashboard/">Shiny</a>
+</li>
+<li>
+  <a href="https://jessiewongus.shinyapps.io/shiny_dash2/">Shinier</a>
+</li>
+<li>
+  <a href="mailto:&lt;jw3597@cumc.columbia.edu&gt;">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/darwinthebeagle/asthma_nyc">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="asthma_nyc" class="section level1">
+<h1>Asthma_NYC</h1>
+<p>Data Science Final Project</p>
+<p>Proposal:</p>
+<p>Group members: Jessie Wong (jw3957) (Github: jessiewongus) Darwin Keung (dk2759) (Github: darwinthebeagle) Felix Tran (fwt2107) (Github: fwt2107) Vince Tam (vt2243) (Github: noshame11)</p>
+<p>Tentative Project Title: “Asthma-related health outcomes and air quality in NYC”</p>
+<p>Motivation: We are interested in the effects of the environment, such as air quality, on health outcomes like asthma among New York City residents. We are curious if the potential effects of air quality on asthma-related health outcomes differ across boroughs, income level, years, neighborhoods, and age groups.</p>
+<p>Intended final products: A website displaying our analyses, a screencast, and a written report discussing our exploratory analyses and main results.</p>
+<p>Anticipated data sources: NYC Open Data on Air Quality <a href="https://data.cityofnewyork.us/Environment/Air-Quality/c3uy-2p5r" class="uri">https://data.cityofnewyork.us/Environment/Air-Quality/c3uy-2p5r</a> NYC income data <a href="https://data.cityofnewyork.us/City-Government/Income-By-Type-Of-Income-And-AGI-Range/gffu-ps8j" class="uri">https://data.cityofnewyork.us/City-Government/Income-By-Type-Of-Income-And-AGI-Range/gffu-ps8j</a></p>
+<p>Planned analyses/visualizations: - GIS visualization - neighborhood/census tract visualization of case cluster - Barplot of health outcomes (attributable deaths, asthma ED visits, and hospitalizations) vs neighborhood demographics - Spaghetti plot displaying rate of asthma-related ED visits over time by borough - Graph displaying how different age groups (children, adults, elderly) may be affected differently by air quality in health outcomes</p>
+<p>Coding challenges: Cleaning/tidying the dataset Merging health outcome data with GIS map data Attempting to use API to keep data live and up to date - “our legacy” Ensuring our analyses answer and address our main questions/motivations</p>
+<p>Planned timeline: - November 12-16 - Project review meeting - November 17 - Finalize what analyses and visualizations to include - November 18 - Delegate analyses and visualizations - November 29 - Group meeting to go over progress and update each other - December 2 - Complete analyses and visualizations - December 3 - Create website - December 4 - Record screencast - December 5 - Review website and screencast - December 6 - Submit final project</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

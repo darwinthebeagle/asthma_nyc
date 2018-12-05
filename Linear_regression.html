@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Felix Tran" />
+
+
+<title>Linear_regression</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="about.html">
+    <span class=" Home"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="plotly.html">Pollution Densities</a>
+</li>
+<li>
+  <a href="mold_plotly.html">Mold Levels</a>
+</li>
+<li>
+  <a href="https://jessiewongus.shinyapps.io/shiny_dashboard/">Shiny</a>
+</li>
+<li>
+  <a href="https://jessiewongus.shinyapps.io/shiny_dash2/">Shinier</a>
+</li>
+<li>
+  <a href="mailto:&lt;jw3597@cumc.columbia.edu&gt;">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/darwinthebeagle/asthma_nyc">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Linear_regression</h1>
+<h4 class="author"><em>Felix Tran</em></h4>
+<h4 class="date"><em>December 2, 2018</em></h4>
+
+</div>
+
+
+<p>This file runs a linear regression on PM 2.5-attributable ED visits among NYC neighborhoods by PM 2.5 levels and neighborhood poverty.</p>
+<div id="the-regression-model" class="section level1">
+<h1>The regression model</h1>
+<p>(Neighborhood rate of PM 2.5-attributable ED visits per 100,000 people) = (Intercept) + (Average micrograms of PM 2.5 per cubic meter of air) + (% of people in neighborhood living in poverty)</p>
+</div>
+<div id="the-data" class="section level1">
+<h1>The data</h1>
+<div id="rate-of-pm-2.5-attributable-ed-visits-per-100000" class="section level3">
+<h3>Rate of PM 2.5-attributable ED visits per 100,000</h3>
+<p>Rates of ED visits were obtained from NYC Open Data for the timeframe 2009-2011. Rates were reported for children 0-17 years old and adults 18 years and older by neighborhood.</p>
+</div>
+<div id="pm-2.5-air-pollution" class="section level3">
+<h3>PM 2.5 air pollution</h3>
+<p>Measures of PM 2.5 air pollution were obtained from the NYC Environment and Health Data Portal. Measures cover the timeframe 2009-2011.</p>
+</div>
+<div id="neighborhood-poverty" class="section level3">
+<h3>Neighborhood poverty</h3>
+<p>Measure of neighborhood poverty were obtained from the NYC Environment and Health Data Portal. Measure cover the timeframe 2009-2013. This is the smallest timeframe in which a neighborhood-level poverty rate can be estimated. Although this timeframe does not exactly match the timeframe of the other variables, we believe this estimate is not too far off from the true rate of poverty in NYC neighborhoods for 2009-2011.</p>
+</div>
+</div>
+<div id="cleaning-the-data" class="section level1">
+<h1>Cleaning the data</h1>
+<pre class="r"><code>poverty_df &lt;- readr::read_csv(&#39;./Data/pm_and_poverty_09-13.csv&#39;) %&gt;% 
+  janitor::clean_names() %&gt;% 
+  filter(str_detect(geo_type_name, &quot;UHF&quot;) == T) %&gt;% 
+  filter(measure == &quot;Percent&quot;) %&gt;%
+  filter(name == &quot;Poverty&quot;) %&gt;% 
+  mutate(geography_id = as.integer(geo_entity_id)) %&gt;% 
+  rename(poverty_rate = data_value) %&gt;% 
+  select(geography_id, poverty_rate)</code></pre>
+<pre><code>## Warning: Missing column names filled in: &#39;X16&#39; [16]</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   `Unique Id` = col_character(),
+##   indicator_id = col_double(),
+##   geo_type_id = col_double(),
+##   measurement_type_id = col_double(),
+##   internal_id = col_double(),
+##   subtopic_id = col_double(),
+##   name = col_character(),
+##   Measure = col_character(),
+##   geo_type_name = col_character(),
+##   description = col_character(),
+##   geo_entity_id = col_double(),
+##   geo_entity_name = col_character(),
+##   year_description = col_character(),
+##   data_value = col_double(),
+##   message = col_logical(),
+##   X16 = col_logical()
+## )</code></pre>
+<pre><code>## Warning: 3 parsing failures.
+## row col   expected    actual                              file
+## 291  -- 16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39;
+## 292  -- 16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39;
+## 293  -- 16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39;</code></pre>
+<pre class="r"><code>pm_df &lt;- readr::read_csv(&#39;./Data/pm_and_poverty_09-13.csv&#39;) %&gt;% 
+  janitor::clean_names() %&gt;% 
+  filter(str_detect(geo_type_name, &quot;UHF&quot;) == T) %&gt;% 
+  filter(measure == &quot;Mean&quot;) %&gt;%
+  filter(str_detect(name, &quot;PM&quot;) == T) %&gt;% 
+  mutate(geography_id = as.integer(geo_entity_id)) %&gt;% 
+  group_by(geography_id) %&gt;% 
+  summarize(pm_level = round(mean(data_value), digits = 3))</code></pre>
+<pre><code>## Warning: Missing column names filled in: &#39;X16&#39; [16]</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   `Unique Id` = col_character(),
+##   indicator_id = col_double(),
+##   geo_type_id = col_double(),
+##   measurement_type_id = col_double(),
+##   internal_id = col_double(),
+##   subtopic_id = col_double(),
+##   name = col_character(),
+##   Measure = col_character(),
+##   geo_type_name = col_character(),
+##   description = col_character(),
+##   geo_entity_id = col_double(),
+##   geo_entity_name = col_character(),
+##   year_description = col_character(),
+##   data_value = col_double(),
+##   message = col_logical(),
+##   X16 = col_logical()
+## )</code></pre>
+<pre><code>## Warning: 3 parsing failures.
+## row col   expected    actual                              file
+## 291  -- 16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39;
+## 292  -- 16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39;
+## 293  -- 16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39;</code></pre>
+<pre class="r"><code>asthma_df &lt;- readr::read_csv(&#39;./Data/nyc_asthma_cleaned.csv&#39;) %&gt;% 
+  janitor::clean_names() %&gt;% 
+  filter(str_detect(geo_type_name, &quot;UHF&quot;) == T) %&gt;% 
+  filter(str_detect(name, &quot;PM2.5-Attributable Asthma ED&quot;) == T) %&gt;% 
+  filter(year_description == &#39;2009-2011&#39;) %&gt;% 
+  rename(geography_id = geo_entity_id) %&gt;% 
+  distinct() %&gt;% 
+  inner_join(., poverty_df, by = &quot;geography_id&quot;) %&gt;% 
+  inner_join(., pm_df, by = &quot;geography_id&quot;) %&gt;% 
+  select(-c(indicator_data_id, indicator_id, name, geo_type_name, 
+            year_description)) %&gt;% 
+  spread(key = measure, value = data_valuemessage) %&gt;% 
+  janitor::clean_names() %&gt;% 
+  rename(child_rate = rate_children_0_to_17_yrs_old,
+         adult_rate = rate_18_yrs_and_older)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   indicator_data_id = col_double(),
+##   indicator_id = col_double(),
+##   name = col_character(),
+##   measure = col_character(),
+##   geo_type_name = col_character(),
+##   geo_entity_id = col_double(),
+##   geo_entity_name = col_character(),
+##   year_description = col_character(),
+##   data_valuemessage = col_double()
+## )</code></pre>
+</div>
+<div id="regression-on-adult-ed-visits" class="section level1">
+<h1>Regression on adult ED visits</h1>
+<table>
+<caption>
+Rates of PM 2.5-attributable adult ED visits among NYC neighborhoods in 2009-2011 by PM 2.5 levels and neighborhood poverty
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Term
+</th>
+<th style="text-align:center;">
+Beta coefficient
+</th>
+<th style="text-align:center;">
+95% CI
+</th>
+<th style="text-align:center;">
+P-value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+-42.673154
+</td>
+<td style="text-align:center;">
+-106.43 to 21.08
+</td>
+<td style="text-align:center;">
+0.197
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+poverty_rate
+</td>
+<td style="text-align:center;">
+3.458781
+</td>
+<td style="text-align:center;">
+2.71 to 4.2
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+pm_level
+</td>
+<td style="text-align:center;">
+2.016500
+</td>
+<td style="text-align:center;">
+-3.9 to 7.93
+</td>
+<td style="text-align:center;">
+0.508
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="regression-on-child-ed-visits" class="section level1">
+<h1>Regression on child ED visits</h1>
+<table>
+<caption>
+Rates of PM 2.5-attributable child ED visits among NYC neighborhoods in 2009-2011 by PM 2.5 levels and neighborhood poverty
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Term
+</th>
+<th style="text-align:center;">
+Beta coefficient
+</th>
+<th style="text-align:center;">
+95% CI
+</th>
+<th style="text-align:center;">
+P-value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+-99.607977
+</td>
+<td style="text-align:center;">
+-231.62 to 32.41
+</td>
+<td style="text-align:center;">
+0.147
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+poverty_rate
+</td>
+<td style="text-align:center;">
+5.657225
+</td>
+<td style="text-align:center;">
+4.12 to 7.2
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+pm_level
+</td>
+<td style="text-align:center;">
+8.285253
+</td>
+<td style="text-align:center;">
+-3.96 to 20.53
+</td>
+<td style="text-align:center;">
+0.192
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="comments" class="section level1">
+<h1>Comments</h1>
+<p>For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air pollution do not appear to have a significant effect. Rather, neighborhood poverty is strongly associated with ED visits. For every 1% increase in the proportion of people living in poverty in a particular neighborhood, that neighborhood on average experiences an increase of 3.46 ED visits for PM 2.5-attributable asthma per every 100,000 adults and an increase of 5.66 ED visits for PM 2.5-attributable asthma per every 100,000 children.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

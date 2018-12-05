@@ -1,8 +1,8 @@
 ---
-title: "Single Column (Fill)"
+title: "Poverty and Outdoor Pollutants"
 output: 
   flexdashboard::flex_dashboard:
-    vertical_layout: fill
+  vertical_layout: fill
 runtime: shiny
 ---
 
@@ -14,6 +14,7 @@ library(viridis)
 library(plotly)
 library(stringr)
 library(shiny)
+library(rsconnect)
 ```
 
 ```{r, include = F}
@@ -166,9 +167,6 @@ renderPlotly({
 })
 
 ```
-
 rsconnect::setAccountInfo(name='jessiewongus', token='0611C79A041AC17F0DE8015989197F01', secret='Tl+wxVwu6S3IhVOICWpdkLV9SBiWwHipwT1bs70v')
 
-
-library(rsconnect)
 rsconnect::deployApp('./shiny_dashboard.rmd')

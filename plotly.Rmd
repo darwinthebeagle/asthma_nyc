@@ -3,6 +3,7 @@ title: "Indoor and Outdoor Air Pollutants Across New York City Boroughs"
 output:
   flexdashboard::flex_dashboard:
     orientation: rows
+    vertical_layout: fill
 ---
 
 ```{r setup, include=FALSE}

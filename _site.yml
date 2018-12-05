@@ -7,7 +7,7 @@ navbar:
     - text: Pollution Densities
       href: plotly.html   
     - text: Mold Levels
-      href: mold_plotly.html   
+      href: mold_plotly.html
     - text: Shiny
       href: https://jessiewongus.shinyapps.io/shiny_dashboard/
     - text: Shinier
