@@ -11,6 +11,7 @@
 
 
 
+<<<<<<< HEAD
 <title>Holy cow!</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -22,10 +23,25 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+=======
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+>>>>>>> b9e341bac110a6558b60e9bff7a9e5a82903cd74
 <link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
 <script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
 <script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
 
+<<<<<<< HEAD
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
   pre:not([class]) {
@@ -41,6 +57,8 @@ if (window.hljs) {
   }
 }
 </script>
+=======
+>>>>>>> b9e341bac110a6558b60e9bff7a9e5a82903cd74
 
 
 
@@ -169,6 +187,104 @@ $(document).ready(function () {
 
 
 
+<<<<<<< HEAD
+=======
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+>>>>>>> b9e341bac110a6558b60e9bff7a9e5a82903cd74
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -225,18 +341,84 @@ $(document).ready(function () {
 
 
 
+<<<<<<< HEAD
 <h1 class="title toc-ignore">Holy cow!</h1>
+=======
+<h1 class="title toc-ignore"><center>
+<h1>
+<strong>Asthma and Pollution Across New York City Neighborhoods</strong>
+</h1>
+</center></h1>
+>>>>>>> b9e341bac110a6558b60e9bff7a9e5a82903cd74
 
 </div>
 
 
+<<<<<<< HEAD
 <div id="i-have-a-webpage" class="section level3">
 <h3>I have a webpage!</h3>
 <p>And I can put all kinds of stuff on it!</p>
+=======
+<center>
+<h3>
+Darwin Keung | Felix Tran | Jessie Wong | Vince Tam
+</h3>
+</center>
+<center>
+<img src="pictures/pic1.jpg" style="width:70%">
+</center>
+<div id="overview" class="section level1">
+<h1>Overview</h1>
+<p><em>insert video here</em></p>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Asthma is a major public health concern both in New York City and nationally across the United States. According to CDC’s Behaviorial Risk Factor Surveillance System (BRFSS) data in 2012, approximately 1.4 million New York adults and 314,000 children (under the age of 18) reported having asthma. While data has shown that in the last 10 years, annual asthma related deaths have decreased significantly by over 20%, the disparities in air quality and asthma rates across neighborhoods should be addressed.</p>
+<p>The objective of our project is to further understand the air quality across the different neighborhoods in New York City, through looking at different pollutants and their levels. There are multiple air exposures both outdoor and indoor that can in combination, exacerbate asthma conditions and prevalence among different groups, particularly vulnerable children and elderly. In addition, we hope to explore the relationship between air quality, poverty, and asthma-related health outcomes.</p>
+</div>
+<div id="data-source" class="section level1">
+<h1>Data Source</h1>
+<p>The data was obtained from the <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/PublicTracking.aspx">NYC Environment &amp; Health Data Portal</a> and the <a href="https://data.cityofnewyork.us/Environment/Air-Quality/c3uy-2p5r/data">NYC OpenData</a>.</p>
+<p>The New York City neighborhood boundaries were defined by the <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/EPHTPDF/uhf42.pdf">United Hospital Fund Neighorhood Index</a>. There are a total of 42 neighorboods across the 5 boroughs—Bronx, Staten Island, Queens, Manhattan, and Brooklyn.</p>
+<p>From the air quality data, we focused on 5 outdoor air quality pollutants:</p>
+<ul>
+<li>Fine Particulate Matter (PM2.5)</li>
+<li>Sulfur Dioxide (SO2)</li>
+<li>Benzene</li>
+<li>Formaldehyde</li>
+<li>Nitrogen Oxide (NOx)</li>
+</ul>
+<p>In addition to outdoor air pollutants, we wanted to explore the indoor exposure to mold that may contribute to the prevalence of asthma. Data collected from the New York City Community Health Survey of the percentage of adults reporting mold in their homes were used. The percentages were collected and calculated based off the number of adults reporting damp spots or mold in at least one room in their building, excluding the bathroom, in the past 30 days.</p>
+<p>The 3 health outcomes of interest are asthma-related ED visits, hospitalizations, and deaths for adults and for children (under the age of 18).</p>
+</div>
+<div id="analyses" class="section level1">
+<h1>Analyses</h1>
+<p>Research questions that we were interested in exploring in our analyses:</p>
+<ol style="list-style-type: decimal">
+<li>What is the distribution of asthma rates across neighborhoods?</li>
+<li>What is the relationship between pollution levels and the poverty level of the neighborhood?</li>
+<li>How do the rates of asthma-related ED visits, hospitalizations, and deaths between different neighborhoods compare? Are there any indication of disparities?</li>
+<li>What is the impact of the collective exposure to high levels of all the pollutants in comparison to exposure to them individually?</li>
+<li>How does the indoor exposure to mold compare to the outdoor pollution exposure?</li>
+</ol>
+<p>After visualizing the distribution pollutants across neighborhoods, a linear regression is performed on PM 2.5-attributable ED visits among NYC neighborhoods by PM 2.5 levels and neighborhood poverty.</p>
+</div>
+<div id="conclusions" class="section level1">
+<h1>Conclusions</h1>
+<p>Pollutant Distribution:</p>
+<p>Air Pollutants: Based on our density plots found in the <strong>Pollution Density</strong> tab, we see varying distribution of the different outdoor air pollutants. Among the different boroughs, Queens and Staten Island remain on the lower end of the concentration levels for all 5 pollutants examined. Manhattan had the widest distribution of concentration levels, illustrating that there is a wider spectrum of high pollutation levels in certain neighborhoods and low levels in others. Bronx and Brooklyn’s pollution levels stayed in the middle ranges in comparison to the other boroughs, however, there is significant peaking for certain pollutants, including Benzene for Bronx.</p>
+<p>Linear Regression Results:</p>
+<p>For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air pollution do not appear to have a significant effect. Rather, neighborhood poverty is strongly associated with ED visits. For every 1% increase in the proportion of people living in poverty in a particular neighborhood, that neighborhood on average experiences an increase of 3.46 ED visits for PM 2.5-attributable asthma per every 100,000 adults and an increase of 5.66 ED visits for PM 2.5-attributable asthma per every 100,000 children.</p>
+>>>>>>> b9e341bac110a6558b60e9bff7a9e5a82903cd74
 </div>
 
 
 
+<<<<<<< HEAD
+=======
+</div>
+</div>
+>>>>>>> b9e341bac110a6558b60e9bff7a9e5a82903cd74
 
 </div>
 
