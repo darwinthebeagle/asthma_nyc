@@ -35,7 +35,9 @@ Air pollution and asthma correlated?
 
 Data: Source, scraping method, cleaning, etc.
 
-Sources: much of the data was from NYCOpenData. [Link](????)
+Sources:  
+
+Data sourced from NYC's Environment & Health Data Portal [Link](http://a816-dohbesp.nyc.gov/IndicatorPublic/PublicTracking.aspx)
 
 ----------
 Exploratory analysis: Visualizations, summaries, and exploratory statistical analyses. Justify the steps you took, and show any major changes to your ideas.
