@@ -1,20 +1,44 @@
 ---
-title: "Final_Report"
+title: "Asthma-related health outcomes and air quality in NYC"
 output: html_document
 ---
 
-Motivation: Provide an overview of the project goals and motivation.
+**Motivation:**
 
+We are interested in the effects of the environment, such as air quality, on health outcomes like asthma among New York City residents. We are curious if the potential effects of air quality on asthma-related health outcomes differ across boroughs, income level, years, neighborhoods, and age groups.
 
-Related work: Anything that inspired you, such as a paper, a web site, or something we discussed in class.
+**Related work:**
+
+Research has observed that people living in inner cities like New York, Chicago and Baltimore, had rates of asthma in general and they seemed to have very high rates of hospitalization and emergency room visits.
+
+The urban environment can generate large amounts of environmental pollutants such as PM2.5 which contribute to increase morbidity and morality outcomes such as asthma. A major source of PM2.5 is from burning heating oil for buildings and traffic. Historically rooted inequities places much of this environmental health burder of PM2.5 pollution and asthma on lower income communities. For further infomation on the Environmental Health Impact Assessment of PM2.5 check out this [paper](http://a816-dohbesp.nyc.gov/IndicatorPublic/traffic/index.html) and this neat interactive webpage the New York City Community Health Survey Team put together [here](http://a816-dohbesp.nyc.gov/IndicatorPublic/traffic/index.html). 
+
+While the external city environment plays a role in our health, the home environment is critical as well [The indoor environment and inner-city childhood asthma](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4110514/). Exposure to indoor pollutants and allergens like mold and roach allergen and high Nitrogen dioxide concentrations from poor ventilation of gas stoves and furnaces are some factors linked to asthma as well.
+
+Lastly we should keep in mind the socio-economic factors of asthma. NPR and _All Things Considered_ did a provacatively penned piece ["The City Might Not Be To Blame For High Asthma Rates"](https://www.npr.org/sections/health-shots/2015/01/20/378608279/the-inner-city-might-not-be-to-blame-for-high-asthma-rates) based on 
+[Keet et al. (2015)](https://www.jacionline.org/article/S0091-6749%2814%2901676-5/abstract). Dr. Keet and her collaborators found that even more children had asthma in poor suburban and medium sized towns in other regions of the country. Additionally living in the inner city didn't seem to a risk factor at all for having asthma for children outside of the Northeastern states.Inner cities areas have higher burden of asthma conflated with areas of poverty.That is to say poverty is stronger predictive factor than the location you live in, possibily due to more day to day stress and diet factors that contribute to the weathering of your body and your immune system. 
+
 
 
 Initial questions: What questions are you trying to answer? How did these questions evolve over the course of the project? What new questions did you consider in the course of your analysis?
 
+**Initial questions:**
+
+Our initial questions revolved around the effects of traffic, air quality,and asthma among New York City residents differ across boroughs, income level, years, neighborhoods, and age groups. We found that our data set was missing certain years, so we dropped the time aspect of our analysis. We learned more about indoor quality and added mold as a factor to look at. The traffic data was more of an source of air pollution and not the immediate factor on a causial pathway so we focused more on air pollution than traffic data.
+
+We paired down our questions to...
+
+Poverty and asthma ED rates correlated?
+Air pollution and asthma correlated?
+(NEW) Mold and asthma correlated in NYC?
+
+----------
 
 Data: Source, scraping method, cleaning, etc.
 
+Sources: much of the data was from NYCOpenData. [Link](????)
 
+----------
 Exploratory analysis: Visualizations, summaries, and exploratory statistical analyses. Justify the steps you took, and show any major changes to your ideas.
 
 
