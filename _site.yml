@@ -5,7 +5,7 @@ navbar:
     - icon: "Home"
       href: about.html
     - text: Pollution Densities
-      href: Plotly.html   
+      href: plotly.html   
     - text: Mold Levels
       href: mold_plotly.html   
     - text: Shiny

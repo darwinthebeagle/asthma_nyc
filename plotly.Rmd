@@ -103,4 +103,4 @@ NO2_dens = asthma_clean %>%
 ggplotly(NO2_dens)
 ```
 
-rmarkdown::render("Plotly.Rmd", output_format = "flex_dashboard")
+rmarkdown::render("plotly.Rmd", output_format = "flex_dashboard")
