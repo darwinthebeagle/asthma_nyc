@@ -2,7 +2,7 @@
 title: "Outdoor Air Pollutants Across New York City Boroughs"
 output:
   flexdashboard::flex_dashboard:
-    vertical_layout: scroll
+    vertical_layout: fill
 ---
 
 ```{r setup, include=FALSE}
@@ -21,7 +21,21 @@ asthma_clean = asthma_df %>%
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A : Total SO2 Emissions 
+### Chart A : Traffic Density: Annual Vehicle Miles Traveled Across Boroughs
+
+```{r}
+VMT_dens = asthma_clean %>% 
+filter(name == "Traffic Density- Annual Vehicle Miles Traveled (VMT)") %>%
+group_by(Borough) %>%
+ggplot(aes(x = value, fill = Borough)) +
+geom_density(alpha = 0.5) + 
+  labs(x = "Annual Vehicle Miles Traveled (VMT)", y = "Density") + 
+theme_classic()
+
+ggplotly(VMT_dens)
+```
+
+### Chart B : Total SO2 Emissions 
 
 ```{r}
 SO2 = asthma_clean %>% 
@@ -37,7 +51,7 @@ SO2 = asthma_clean %>%
 ggplotly(SO2)
 ```
 
-### Chart B : Average Benzene Concentrations
+### Chart C : Average Benzene Concentrations
 
 ```{r}
 benz = asthma_clean %>% 
@@ -55,7 +69,7 @@ ggplotly(benz)
 
 Column {data-width=350}
 -----------------------------------------------------------------------
-### Chart C : Average Formaldehyde Concentrations
+### Chart D : Average Formaldehyde Concentrations
 
 ```{r}
 Formaldehyde = asthma_clean %>% 
@@ -71,7 +85,7 @@ Formaldehyde = asthma_clean %>%
 ggplotly(Formaldehyde)
 ```
 
-### Chart D : Total PM2.5 Emissions
+### Chart E : Total PM2.5 Emissions
 
 ```{r}
 PM_dens = asthma_clean %>% 
@@ -87,7 +101,7 @@ PM_dens = asthma_clean %>%
 ggplotly(PM_dens)
 ```
 
-### Chart E : Total NOx Emissions
+### Chart F : Total NOx Emissions
 
 ```{r}
 NO2_dens = asthma_clean %>% 
