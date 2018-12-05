@@ -5,13 +5,6 @@ date: "12/1/2018"
 output: html_document
 ---
 
----
-title: "Data_cleaning"
-author: "Felix Tran"
-date: "November 27, 2018"
-output: html_document
----
-
 This Rmarkdown file contains code for reading in and cleaning the raw dataset.
 
 ```{r setup, include=FALSE}
