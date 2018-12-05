@@ -1,7 +1,7 @@
 ---
 title: "Single Column (Fill)"
-output: 
-  flexdashboard::flex_dashboard:
+output:
+    flexdashboard::flex_dashboard:
     vertical_layout: fill
 runtime: shiny
 ---
@@ -13,6 +13,7 @@ library(tidyverse)
 library(viridis)
 library(plotly)
 library(stringr)
+library(shiny)
 ```
 
 ```{r, include = F}
@@ -40,7 +41,6 @@ asthma_df = readr::read_csv('./Data/nyc_asthma_cleaned.csv') %>%
   rename(geography_id = geo_entity_id) %>% 
   inner_join(., poverty_df, by = "geography_id")
 ```
-
 
 
 Column {.sidebar}
@@ -71,4 +71,5 @@ renderPlotly({
            yaxis = list(title = "Pollutant concentration (Total emissions/km2)"))
 })
 ```
+
 rsconnect::deployApp('./shiny_dash2.rmd')

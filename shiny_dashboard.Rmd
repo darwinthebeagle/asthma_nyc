@@ -13,6 +13,7 @@ library(tidyverse)
 library(viridis)
 library(plotly)
 library(stringr)
+library(shiny)
 ```
 
 ```{r, include = F}
@@ -167,7 +168,6 @@ renderPlotly({
 ```
 
 rsconnect::setAccountInfo(name='jessiewongus', token='0611C79A041AC17F0DE8015989197F01', secret='Tl+wxVwu6S3IhVOICWpdkLV9SBiWwHipwT1bs70v')
-getwd()
 
 
 library(rsconnect)
