@@ -2,7 +2,7 @@
 title: "Mold in Homes Reports Compared to Asthma Rates Across New York City Boroughs"
 output:
   flexdashboard::flex_dashboard:
-    orientation: rows
+    orientation: columns
     vertical_layout: fill
 ---
 
@@ -18,7 +18,7 @@ asthma_data <- read.csv(file = "./Data/Asthma_Numbers_2012.csv")
 
 ```
 
-Row {data-width=650}
+Column {data-width=650}
 -----------------------------------------------------------------------
 ### Chart A : Number of Mold Complaints per NYC Neighborhood (2012)
 
@@ -41,7 +41,7 @@ neighborhood_mold_data =
 ggplotly(neighborhood_mold_data)
 ```
 
-Row {data-width=650}
+Column {data-width=650}
 -----------------------------------------------------------------------
 
 ### Chart B : Asthma Rates Per 10,000 Across NYC Neighborhoods (2012)
