@@ -20,8 +20,23 @@ asthma_clean = asthma_df %>%
 
 Column {data-width=650}
 -----------------------------------------------------------------------
+### Chart A : Traffic Density
 
-### Chart A : Total SO2 Emissions 
+```{r VMT}
+VMT_dens = asthma_clean %>% 
+  filter(name == "Traffic Density- Annual Vehicle Miles Traveled (VMT)") %>%
+  group_by(Borough) %>% View()
+  ggplot(aes(x = value, fill = Borough)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Average Traffic",
+       x = "Annual Vehicle Miles Traveled",
+       y = "Density") + 
+  theme_classic()
+ggplotly(VMT_dens)
+```
+
+
+### Chart B : Total SO2 Emissions 
 
 ```{r}
 SO2 = asthma_clean %>% 
@@ -37,7 +52,7 @@ SO2 = asthma_clean %>%
 ggplotly(SO2)
 ```
 
-### Chart B : Average Benzene Concentrations
+### Chart C : Average Benzene Concentrations
 
 ```{r}
 benz = asthma_clean %>% 
@@ -55,7 +70,7 @@ ggplotly(benz)
 
 Column {data-width=350}
 -----------------------------------------------------------------------
-### Chart C : Average Formaldehyde Concentrations
+### Chart D : Average Formaldehyde Concentrations
 
 ```{r}
 Formaldehyde = asthma_clean %>% 
@@ -71,12 +86,12 @@ Formaldehyde = asthma_clean %>%
 ggplotly(Formaldehyde)
 ```
 
-### Chart D : Total PM2.5 Emissions
+### Chart E : Total PM2.5 Emissions
 
 ```{r}
 PM_dens = asthma_clean %>% 
   filter(name == "Boiler Emissions- Total PM2.5 Emissions") %>%
-  group_by(Borough) %>%
+  group_by(Borough) %>% View()
   ggplot(aes(x = value, fill = Borough)) +
   geom_density(alpha = 0.5) +
   labs(x = "Total PM2.5 Emissions (Per km2)",
@@ -87,7 +102,7 @@ PM_dens = asthma_clean %>%
 ggplotly(PM_dens)
 ```
 
-### Chart E : Total NOx Emissions
+### Chart F : Total NOx Emissions
 
 ```{r}
 NO2_dens = asthma_clean %>% 
