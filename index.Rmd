@@ -13,9 +13,6 @@ output:
 
 <center><img src="pictures/pic1.jpg" style="width:70%"></center>
 
-# Overview
-*insert video here*
-
 # Introduction
 
 Asthma is a major public health concern both in New York City and nationally across the United States. According to CDC's Behaviorial Risk Factor Surveillance System (BRFSS) data in 2012, approximately 1.4 million New York adults and 314,000 children (under the age of 18) reported having asthma. While data has shown that in the last 10 years, annual asthma related deaths have decreased significantly by over 20%, the disparities in air quality and asthma rates across neighborhoods should be addressed. 
