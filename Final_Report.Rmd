@@ -47,7 +47,7 @@ NYC OpenData: We extracted data regarding mold reported in homes and poverty per
 The New York City neighborhood boundaries were defined by the [United Hospital Fund Neighorhood Index](http://a816-dohbesp.nyc.gov/IndicatorPublic/EPHTPDF/uhf42.pdf). There are a total of 42 neighorboods across the 5 boroughs—Bronx, Staten Island, Queens, Manhattan, and Brooklyn.   
 
 Cleaning:
-After loading the datasets we cleaned it, through filtering for specific years that were the most recent and matched across the different exposures and outcomes for merge. We also converted variables to different forms to manipulate for our analysis including to factors and numericals. 
+After loading the datasets we cleaned it, through filtering for specific years that were the most recent and matched across the different exposures and outcomes for merge. We also converted variables to different forms to manipulate for our analysis including to factors and numericals. Our data cleaning github file can be found [here](https://github.com/darwinthebeagle/asthma_nyc/blob/master/Data_cleaning.Rmd) with the dataset loading and initial cleaning. However additional changes and methods of using the data for our analyses can be found in the links below.
 
 ----------
 Exploratory analysis: Visualizations, summaries, and exploratory statistical analyses. Justify the steps you took, and show any major changes to your ideas.
