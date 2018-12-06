@@ -64,7 +64,6 @@ For the data on mold complaints in homes, there were 9 neighborhoods with unavai
 # Conclusions
 
 **Linear Regression Results:** 
-
 After visualizing the distribution pollutants across neighborhoods, a linear regression is performed on PM 2.5-attributable ED visits among NYC neighborhoods by PM 2.5 levels and neighborhood poverty. The code used for this section can be found
 [here](https://github.com/darwinthebeagle/asthma_nyc/blob/master/Linear_regression.Rmd). For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air pollution do not appear to have a statistically significant effect after adjusting for 
 neighborhood poverty. Rather, neighborhood poverty is strongly associated with 
@@ -74,4 +73,5 @@ neighborhood, that neighborhood on average experiences an increase of 3.46 ED
 visits for PM 2.5-attributable asthma per every 100,000 adults and an increase 
 of 5.66 ED visits for PM 2.5-attributable asthma per every 100,000 children. 
 
+**Final Conclusions:** 
 There are significant differences in pollution exposures between boroughs and within neighborhoods belonging to the same borough. Based on the levels of asthma-related emergency visits, hospitalization, and deaths, there is a similar observation of health gaps. More research and analyses should be conducted to address the asthma disparities across neighborhoods in New York City.    
