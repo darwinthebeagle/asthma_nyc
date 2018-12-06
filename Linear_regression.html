@@ -12,7 +12,7 @@
 <meta name="author" content="Felix Tran" />
 
 
-<title>Linear_regression</title>
+<title>Linear regression</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -188,12 +188,6 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="about.html">
-    <span class=" Home"></span>
-     
-  </a>
-</li>
-<li>
   <a href="plotly.html">Pollution Densities</a>
 </li>
 <li>
@@ -226,17 +220,19 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Linear_regression</h1>
+<h1 class="title toc-ignore">Linear regression</h1>
 <h4 class="author"><em>Felix Tran</em></h4>
 <h4 class="date"><em>December 2, 2018</em></h4>
 
 </div>
 
 
-<p>This file runs a linear regression on PM 2.5-attributable ED visits among NYC neighborhoods by PM 2.5 levels and neighborhood poverty.</p>
+<p>This file runs a linear regression on PM 2.5-attributable ED visits among NYC neighborhoods by PM 2.5 levels and neighborhood poverty. Neighborhoods are defined by the <a href="https://www.health.ny.gov/statistics/cancer/registry/appendix/neighborhoods.htm">United Hospital Fund 42 neighborhood designations</a></p>
+<p><br><br></p>
 <div id="the-regression-model" class="section level1">
 <h1>The regression model</h1>
-<p>(Neighborhood rate of PM 2.5-attributable ED visits per 100,000 people) = (Intercept) + (Average micrograms of PM 2.5 per cubic meter of air) + (% of people in neighborhood living in poverty)</p>
+<p><span class="math inline">\(Asthma\:ED\:rate = Intercept + PM\:2.5\:levels + Neighborhood\:poverty\)</span></p>
+<p><br><br></p>
 </div>
 <div id="the-data" class="section level1">
 <h1>The data</h1>
@@ -246,7 +242,7 @@ $(document).ready(function () {
 </div>
 <div id="pm-2.5-air-pollution" class="section level3">
 <h3>PM 2.5 air pollution</h3>
-<p>Measures of PM 2.5 air pollution were obtained from the NYC Environment and Health Data Portal. Measures cover the timeframe 2009-2011.</p>
+<p>PM 2.5 air levels are measured as average micrograms of PM 2.5 per cubic meter of air for a given year. Measures of PM 2.5 air pollution were obtained from the NYC Environment and Health Data Portal. Measures cover the timeframe 2009-2011.</p>
 </div>
 <div id="neighborhood-poverty" class="section level3">
 <h3>Neighborhood poverty</h3>
@@ -255,6 +251,7 @@ $(document).ready(function () {
 </div>
 <div id="cleaning-the-data" class="section level1">
 <h1>Cleaning the data</h1>
+<p>First, the data are cleaned and merged by neighborhood using a unique ID assigned to each neighborhood.</p>
 <pre class="r"><code>poverty_df &lt;- readr::read_csv(&#39;./Data/pm_and_poverty_09-13.csv&#39;) %&gt;% 
   janitor::clean_names() %&gt;% 
   filter(str_detect(geo_type_name, &quot;UHF&quot;) == T) %&gt;% 
@@ -267,27 +264,26 @@ $(document).ready(function () {
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   `Unique Id` = col_character(),
-##   indicator_id = col_double(),
-##   geo_type_id = col_double(),
-##   measurement_type_id = col_double(),
-##   internal_id = col_double(),
-##   subtopic_id = col_double(),
+##   indicator_id = col_integer(),
+##   geo_type_id = col_integer(),
+##   measurement_type_id = col_integer(),
+##   internal_id = col_integer(),
+##   subtopic_id = col_integer(),
 ##   name = col_character(),
 ##   Measure = col_character(),
 ##   geo_type_name = col_character(),
 ##   description = col_character(),
-##   geo_entity_id = col_double(),
+##   geo_entity_id = col_integer(),
 ##   geo_entity_name = col_character(),
 ##   year_description = col_character(),
 ##   data_value = col_double(),
-##   message = col_logical(),
-##   X16 = col_logical()
+##   message = col_character(),
+##   X16 = col_character()
 ## )</code></pre>
+<pre><code>## Warning in rbind(names(probs), probs_f): number of columns of result is not
+## a multiple of vector length (arg 1)</code></pre>
 <pre><code>## Warning: 3 parsing failures.
-## row col   expected    actual                              file
-## 291  -- 16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39;
-## 292  -- 16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39;
-## 293  -- 16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39;</code></pre>
+## row # A tibble: 3 x 5 col     row col   expected   actual    file                              expected   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;                             actual 1   291 &lt;NA&gt;  16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39; file 2   292 &lt;NA&gt;  16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39; row 3   293 &lt;NA&gt;  16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39;</code></pre>
 <pre class="r"><code>pm_df &lt;- readr::read_csv(&#39;./Data/pm_and_poverty_09-13.csv&#39;) %&gt;% 
   janitor::clean_names() %&gt;% 
   filter(str_detect(geo_type_name, &quot;UHF&quot;) == T) %&gt;% 
@@ -300,27 +296,26 @@ $(document).ready(function () {
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   `Unique Id` = col_character(),
-##   indicator_id = col_double(),
-##   geo_type_id = col_double(),
-##   measurement_type_id = col_double(),
-##   internal_id = col_double(),
-##   subtopic_id = col_double(),
+##   indicator_id = col_integer(),
+##   geo_type_id = col_integer(),
+##   measurement_type_id = col_integer(),
+##   internal_id = col_integer(),
+##   subtopic_id = col_integer(),
 ##   name = col_character(),
 ##   Measure = col_character(),
 ##   geo_type_name = col_character(),
 ##   description = col_character(),
-##   geo_entity_id = col_double(),
+##   geo_entity_id = col_integer(),
 ##   geo_entity_name = col_character(),
 ##   year_description = col_character(),
 ##   data_value = col_double(),
-##   message = col_logical(),
-##   X16 = col_logical()
+##   message = col_character(),
+##   X16 = col_character()
 ## )</code></pre>
-<pre><code>## Warning: 3 parsing failures.
-## row col   expected    actual                              file
-## 291  -- 16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39;
-## 292  -- 16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39;
-## 293  -- 16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39;</code></pre>
+<pre><code>## Warning in rbind(names(probs), probs_f): number of columns of result is not a multiple of vector length (arg 1)
+
+## Warning in rbind(names(probs), probs_f): 3 parsing failures.
+## row # A tibble: 3 x 5 col     row col   expected   actual    file                              expected   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;                             actual 1   291 &lt;NA&gt;  16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39; file 2   292 &lt;NA&gt;  16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39; row 3   293 &lt;NA&gt;  16 columns 1 columns &#39;./Data/pm_and_poverty_09-13.csv&#39;</code></pre>
 <pre class="r"><code>asthma_df &lt;- readr::read_csv(&#39;./Data/nyc_asthma_cleaned.csv&#39;) %&gt;% 
   janitor::clean_names() %&gt;% 
   filter(str_detect(geo_type_name, &quot;UHF&quot;) == T) %&gt;% 
@@ -338,16 +333,17 @@ $(document).ready(function () {
          adult_rate = rate_18_yrs_and_older)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
-##   indicator_data_id = col_double(),
-##   indicator_id = col_double(),
+##   indicator_data_id = col_integer(),
+##   indicator_id = col_integer(),
 ##   name = col_character(),
 ##   measure = col_character(),
 ##   geo_type_name = col_character(),
-##   geo_entity_id = col_double(),
+##   geo_entity_id = col_integer(),
 ##   geo_entity_name = col_character(),
 ##   year_description = col_character(),
 ##   data_valuemessage = col_double()
 ## )</code></pre>
+<p><br><br></p>
 </div>
 <div id="regression-on-adult-ed-visits" class="section level1">
 <h1>Regression on adult ED visits</h1>
@@ -416,6 +412,10 @@ pm_level
 </tr>
 </tbody>
 </table>
+<p><br><br> <span class="math inline">\(Asthma\:ED\:Rate = -42.67 + 3.46(Neighborhood\:poverty) + 2.02(PM\:2.5\:air\:levels)\)</span></p>
+<p>For every 1 unit increase in PM 2.5 air levels, adult PM 2.5-attributable asthma ED visits per 100,000 adults for a given neighborhood increase on average by 2.02 visits. The confidence interval (-3.9 to 7.93) suggests this observed association may be spurious.</p>
+<p>For every 1 percentage point increase in the proportion of people living in poverty in a neighborhood, adult PM 2.5-attributable asthma ED visits per 100,000 adults for a given neighborhood increase on average by 3.46 visits. The confidence interval (2.71 to 4.2) suggests that we are unlikely to observe this association if neighborhood poverty truly has no association with asthma ED rates.</p>
+<p><br><br></p>
 </div>
 <div id="regression-on-child-ed-visits" class="section level1">
 <h1>Regression on child ED visits</h1>
@@ -484,10 +484,14 @@ pm_level
 </tr>
 </tbody>
 </table>
+<p><br><br> <span class="math inline">\(Asthma\:ED\:Rate = -99.61 + 5.66(Neighborhood\:poverty) + 8.29(PM\:2.5\:air\:levels)\)</span></p>
+<p>For every 1 unit increase in PM 2.5 air levels, child PM 2.5-attributable asthma ED visits per 100,000 children for a given neighborhood increase on average by 8.29 visits. The 95% confidence interval (-3.96 to 20.53) suggests this observed association may be spurious.</p>
+<p>For every 1 percentage point increase in the proportion of people living in poverty in a neighborhood, child PM 2.5-attributable asthma ED visits per 100,000 children for a given neighborhood increase on average by 5.66 visits. The 95% confidence interval (4.12 to 7.2) suggests that we are unlikely to observe this association if neighborhood poverty truly has no association with asthma ED rates.</p>
+<p><br><br></p>
 </div>
 <div id="comments" class="section level1">
 <h1>Comments</h1>
-<p>For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air pollution do not appear to have a significant effect. Rather, neighborhood poverty is strongly associated with ED visits. For every 1% increase in the proportion of people living in poverty in a particular neighborhood, that neighborhood on average experiences an increase of 3.46 ED visits for PM 2.5-attributable asthma per every 100,000 adults and an increase of 5.66 ED visits for PM 2.5-attributable asthma per every 100,000 children.</p>
+<p>For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air pollution do not appear to have a statistically significant effect. Rather, neighborhood poverty is more strongly associated with asthma ED visits.</p>
 </div>
 
 
