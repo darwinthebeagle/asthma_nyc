@@ -34,7 +34,8 @@ neighborhood_mold_data =
   labs(
     title = "Number of Mold Complaints per NYC Neighborhood",
     x = "Neighborhood",
-    y = "Mold Complaints"
+    y = "Mold Complaints",
+    color = "Borough"
   )  +
   theme(axis.text.x = element_text(angle = 90)) 
 
@@ -57,8 +58,9 @@ mold_asthma = asthma_data %>%
   labs(
     title = "Asthma Rates Per 10,000 (Age-Adjusted)",
     x = "Neighborhood",
-    y = "Rate of Asthma (per 10,000)"
-  )  +
+    y = "Rate of Asthma (per 10,000)",
+    color = "Borough"
+  ) +
   theme(axis.text.x = element_text(angle = 90)) 
 
 ggplotly(mold_asthma)
