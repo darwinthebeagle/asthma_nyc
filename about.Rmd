@@ -17,7 +17,7 @@ output:
 
 # Overview 
 
-<iframe width="853" height="480" src="https://www.youtube.com/embed/vtIguH0EzTo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Check out this video tour of the site [here](https://www.youtube.com/embed/vtIguH0EzTo?rel=0)
 
 
 # Introduction

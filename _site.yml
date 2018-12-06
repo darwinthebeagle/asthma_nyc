@@ -18,5 +18,5 @@ navbar:
       href: https://github.com/jessiewongus/asthma_shiny.git
       
 output:
-  html_document 
+  html_document
   
