@@ -61,14 +61,9 @@ There are neigborhood differences in the rates of asthma-related emergency depar
 
 For the data on mold complaints in homes, there were 9 neighborhoods with unavailable data. However 3 out of the 5 neighborhoods with the highest mold reports were located in Bronx. We took into account that since the data is based on self-report, there may be potentially cases that go unreported. It is possible that if there is reporting bias across neighborhoods in the different boroughs, this may underestimate the differences and level of mold in homes. 
 
-**Linear Regression:**
-
-After visualizing the distribution pollutants across neighborhoods, a linear regression is performed on PM 2.5-attributable ED visits among NYC neighborhoods by PM 2.5 levels and neighborhood poverty. The code used for this section can be found
-[here](https://github.com/darwinthebeagle/asthma_nyc/blob/master/Linear_regression.Rmd). For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air pollution do not appear to have a statistically significant effect. Rather, neighborhood poverty is strongly associated with ED visits. For every 1% increase in the proportion of people living in poverty in a particular neighborhood, that neighborhood on average experiences an increase of 3.46 ED visits for PM 2.5-attributable asthma per every 100,000 adults and an increase of 5.66 ED visits for PM 2.5-attributable asthma per every 100,000 children. 
-
 # Conclusions
 
-Linear Regression Results: 
+**Linear Regression Results:** 
 
 After visualizing the distribution pollutants across neighborhoods, a linear regression is performed on PM 2.5-attributable ED visits among NYC neighborhoods by PM 2.5 levels and neighborhood poverty. The code used for this section can be found
 [here](https://github.com/darwinthebeagle/asthma_nyc/blob/master/Linear_regression.Rmd). For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air pollution do not appear to have a statistically significant effect. Rather, neighborhood poverty is strongly associated with ED visits. For every 1% increase in the proportion of people living in poverty in a particular neighborhood, that neighborhood on average experiences an increase of 3.46 ED visits for PM 2.5-attributable asthma per every 100,000 adults and an increase of 5.66 ED visits for PM 2.5-attributable asthma per every 100,000 children. 
