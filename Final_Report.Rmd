@@ -2,6 +2,12 @@
 title: "Asthma-related health outcomes and air quality in NYC"
 output: html_document
 ---
+### Group members:
+
+Jessie Wong (jw3957) (Github: jessiewongus)
+Darwin Keung (dk2759) (Github: darwinthebeagle)
+Felix Tran (fwt2107) (Github: fwt2107)
+Vince Tam (vt2243) (Github: noshame11)
 
 **Motivation:**
 
@@ -32,6 +38,22 @@ Our initial questions:
 5) How does the indoor exposure to mold compare to the outdoor pollution exposure and it's effect on asthma?
 
 Our initial questions revolved around the effects of traffic, air quality, and asthma among New York City residents differ across boroughs, income level, years, neighborhoods, and age groups. We found that our data set was missing certain years, so we dropped the time aspect of our analysis. We learned more about indoor quality and added mold as a factor to look at. The traffic data was more of an source of air pollution and not the immediate factor on a causial pathway so we focused more on air pollution than traffic data.
+
+**Process:**
+
+Intial plan analyses/visualizations and outcome
+
+- GIS visualization - neighborhood/census tract visualization of case cluster.
+  - Had issues matching geocodes and neighbhood locations. Wish to return to this someday, but need more knowledge in GIS and R to make this happen.
+  
+- Barplot of health outcomes (attributable deaths, asthma ED visits, and hospitalizations) vs neighborhood demographics
+  - Made a shiny object and repo for this.
+  
+- Spaghetti plot displaying rate of asthma-related ED visits over time by borough
+  - Time was not continious, there isn't data from 2008, and the cases were grouped into two time periods, 2005 to 2007 and 2009 to 2011. Made this a shiny bargraph instead.
+  
+- Graph displaying how different age groups (children, adults, elderly) may be affected differently by air quality in health outcomes
+  - this last plot was merged into shiny bargraph as a age group filter
 
 ----------
 
