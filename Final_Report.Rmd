@@ -35,18 +35,12 @@ Our initial questions revolved around the effects of traffic, air quality, and a
 
 ----------
 
-**Data:**
-Source, scraping method, cleaning, etc.
+**Data Information:**
+
+All the datafiles that we used on the project can be found [here](https://github.com/darwinthebeagle/asthma_nyc/tree/master/Data) in Github.
 
 The data was obtained from the [NYC Environment & Health Data Portal](http://a816-dohbesp.nyc.gov/IndicatorPublic/PublicTracking.aspx) and the [NYC OpenData](https://data.cityofnewyork.us/Environment/Air-Quality/c3uy-2p5r/data).  
 
-<<<<<<< HEAD
-Data Source:
-NYC's Environment & Health Data Portal [Link](http://a816-dohbesp.nyc.gov/IndicatorPublic/PublicTracking.aspx)
-
-
-**Exploratory analysis:** Visualizations, summaries, and exploratory statistical analyses. Justify the steps you took, and show any major changes to your ideas.
-=======
 NYC Environment & Health Data Portal: We extracted data regarding the air pollutant levels (2005 and 2013) and asthma-related health outcomes, including deaths, hospitalization, and emergency department visits (2005-2007, 2009-2011). 
 
 NYC OpenData: We extracted data regarding mold reported in homes and poverty percentages.
@@ -55,35 +49,26 @@ The New York City neighborhood boundaries were defined by the [United Hospital F
 
 Cleaning:
 After loading the datasets we cleaned it, through filtering for specific years that were the most recent and matched across the different exposures and outcomes for merge. We also converted variables to different forms to manipulate for our analysis including to factors and numericals. Our data cleaning github file can be found [here](https://github.com/darwinthebeagle/asthma_nyc/blob/master/Data_cleaning.Rmd) with the dataset loading and initial cleaning. However additional changes and methods of using the data for our analyses can be found in the links below.
->>>>>>> c93a6b33752778fbdcffee18f4737f14efd7dcef
 
+----------
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-**Additional analysis:** If you undertake formal statistical analyses, describe these in detail
-=======
-(plotly.rmd)
-=======
-Air Pollutant Plot
+**Exploratory analysis:** 
+
+Air Pollutant Plotly
 [Github file](https://github.com/darwinthebeagle/asthma_nyc/blob/master/plotly.Rmd)
->>>>>>> c93a6b33752778fbdcffee18f4737f14efd7dcef
+
 We generated the density plots across the different air pollutants by boroughs. Originally we had planned on mapping the change over time in air quality across the different boroughs to visualize trends, including how pollution levels have changed over time within each borough and comparing the levels within boroughs. However our dataset had only provided the pollutant levels for two years. Instead, using the density plots, we are able to examine the concentration of values within each borough and the distribution based on width across the x-axis. Based on the plots, we are looking to see if there are patterns in air pollution across different boroughs. For example, whether high densities and low densities are found within the same boroughs for different pollutants. 
 
 Mold Plotly
 [Github file](https://github.com/darwinthebeagle/asthma_nyc/blob/master/mold_plotly.Rmd)
+
 In addition to outdoor air quality that may trigger and exacerbate asthma, we wanted to explore potential indoor exposures that are linked to asthma. Mold can trigger asthma and affect individuals' ability to control their asthma, particularly if it is within one's home and persists as a constant everday exposure. The data source we located reported the number of mold complaints by NYC neighborhoods. We selected the age-adjusted rates to allow the populations in our analysis to be compared when the age profiles may be potentially quite different.
 
-<<<<<<< HEAD
-(linear_regression.rmd)
->>>>>>> 474d9531edca428bdd149b9c2180e064c4fd1efe
+**Additional analysis:**
 
-For our statistical analyses we chose to use a linear regression model as our outcome (asthma rates) is continuous. We looked at poverty and pm2.5 levels by neighborhood for adult and childhood asthma rates.
-
-
-**Discussion:** What were your findings? Are they what you expect? What insights into the data can you make?
-=======
 Linear Regression
 [Github file](https://github.com/darwinthebeagle/asthma_nyc/blob/master/Linear_regression.Rmd)
+
 We ran 2 linear regression models on PM 2.5-attributable asthma ED rates for
 adults and children by neighborhood poverty and PM 2.5 air levels. PM 
 2.5-attributable asthma ED rates were age-adjusted rates per 100,000 adults or 
@@ -96,10 +81,9 @@ We calculated the beta coefficients for PM 2.5 air levels and neighborhood
 poverty, 95% confidence intervals, and p-values for t-tests at a 5% significance
 level of each estimated coefficient after controlling for the other coefficient. 
 
+----------
 
 **Discussion** 
-What were your findings? Are they what you expect? What insights into the data can you make?
->>>>>>> c93a6b33752778fbdcffee18f4737f14efd7dcef
 
 Air Pollutants: 
 Based on our density plots found in the Pollution Density tab, we see varying distribution of the different outdoor air pollutants. Among the different boroughs, Queens and Staten Island remain on the lower end of the concentration levels for all 5 pollutants examined. Manhattan had the widest distribution of concentration levels, illustrating that there is a wider spectrum of high pollutation levels in certain neighborhoods and low levels in others. Bronx and Brooklyn's pollution levels stayed in the middle ranges in comparison to the other boroughs, however, there is significant peaking for certain pollutants, including Benzene for Bronx. We expected there the be a more consistent and defined pattern across the different pollutants across boroughs, of boroughs with high and low densities. However this may be attributed to the manner that the pollutant is emitted and the sources. Through exploring the data, we also recognized that there is significant within borough differences and gaps, where certain regions of the borough experience very high densities of pollution and others experience very low, which is surprising considering that they are in close proximity. 
