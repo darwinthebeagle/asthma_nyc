@@ -18,10 +18,16 @@ While the external city environment plays a role in our health, the home environ
 Lastly we should keep in mind the socio-economic factors of asthma. NPR and _All Things Considered_ did a provacatively penned piece ["The City Might Not Be To Blame For High Asthma Rates"](https://www.npr.org/sections/health-shots/2015/01/20/378608279/the-inner-city-might-not-be-to-blame-for-high-asthma-rates) based on 
 [Keet et al. (2015)](https://www.jacionline.org/article/S0091-6749%2814%2901676-5/abstract). Dr. Keet and her collaborators found that even more children had asthma in poor suburban and medium sized towns in other regions of the country. Additionally living in the inner city didn't seem to a risk factor at all for having asthma for children outside of the Northeastern states.Inner cities areas have higher burden of asthma conflated with areas of poverty.That is to say poverty is stronger predictive factor than the location you live in, possibily due to more day to day stress and diet factors that contribute to the weathering of your body and your immune system. 
 
-
 Initial questions: What questions are you trying to answer? How did these questions evolve over the course of the project? What new questions did you consider in the course of your analysis?
 
 **Initial questions:**
+
+Our initial questions: 
+1) What is the distribution of asthma rates across neighborhoods?
+2) What is the relationship between pollution levels and the poverty level of the neighborhood? 
+3) How do the rates of asthma-related ED visits, hospitalizations, and deaths between different neighborhoods compare? Are there any indication of disparities?
+4) What is the impact of the collective exposure to high levels of all the pollutants in comparison to exposure to them individually?
+5) How does the indoor exposure to mold compare to the outdoor pollution exposure?
 
 Our initial questions revolved around the effects of traffic, air quality, and asthma among New York City residents differ across boroughs, income level, years, neighborhoods, and age groups. We found that our data set was missing certain years, so we dropped the time aspect of our analysis. We learned more about indoor quality and added mold as a factor to look at. The traffic data was more of an source of air pollution and not the immediate factor on a causial pathway so we focused more on air pollution than traffic data.
 
@@ -38,7 +44,17 @@ NYC's Environment & Health Data Portal [Link](http://a816-dohbesp.nyc.gov/Indica
 **Exploratory analysis:** Visualizations, summaries, and exploratory statistical analyses. Justify the steps you took, and show any major changes to your ideas.
 
 
+<<<<<<< HEAD
 **Additional analysis:** If you undertake formal statistical analyses, describe these in detail
+=======
+(plotly.rmd)
+We generated the density plots across the different air pollutants by boroughs. Originally we had planned on mapping the change over time in air quality across the different boroughs to visualize trends, including how pollution levels have changed over time within each borough and comparing the levels within boroughs. However our dataset had only provided the pollutant levels for two years. Instead, using the density plots, we are able to examine the concentration of values within each borough and the distribution based on width across the x-axis. Based on the plots, we are looking to see if there are patterns in air pollution across different boroughs. For example, whether high densities and low densities are found within the same boroughs for different pollutants. 
+
+(mold_plotly.rmd)
+In addition to outdoor air quality that may trigger and exacerbate asthma, we wanted to explore potential indoor exposures that are linked to asthma. Mold can trigger asthma and affect individuals' ability to control their asthma, particularly if it is within one's home and persists as a constant everday exposure. The data source we located reported the number of mold complaints by NYC neighborhoods. We selected the age-adjusted rates to allow the populations in our analysis to be compared when the age profiles may be potentially quite different.
+
+(linear_regression.rmd)
+>>>>>>> 474d9531edca428bdd149b9c2180e064c4fd1efe
 
 For our statistical analyses we chose to use a linear regression model as our outcome (asthma rates) is continuous. We looked at poverty and pm2.5 levels by neighborhood for adult and childhood asthma rates.
 
