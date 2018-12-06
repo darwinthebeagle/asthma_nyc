@@ -9,6 +9,10 @@ output:
     toc_float: true
 ---
 
+<center> <h3>Darwin Keung | Felix Tran | Jessie Wong | Vince  Tam</h3> </center>
+
+<center><img src="pictures/pic1.jpg" style="width:70%"></center>
+
 # Overview 
 
 <iframe width="853" height="480" src="https://www.youtube.com/embed/vtIguH0EzTo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -58,6 +62,9 @@ There are neigborhood differences in the rates of asthma-related emergency depar
 
 For the data on mold complaints in homes, there were 9 neighborhoods with unavailable data. However 3 out of the 5 neighborhoods with the highest mold reports were located in Bronx. We took into account that since the data is based on self-report, there may be potentially cases that go unreported. It is possible that if there is reporting bias across neighborhoods in the different boroughs, this may underestimate the differences and level of mold in homes. 
 
+
+# Conclusions
+
 **Linear Regression:**
 
 After visualizing the distribution pollutants across neighborhoods, a linear regression is performed on PM 2.5-attributable ED visits among NYC neighborhoods by PM 2.5 levels and neighborhood poverty. The code used for this section can be found
@@ -69,8 +76,4 @@ neighborhood, that neighborhood on average experiences an increase of 3.46 ED
 visits for PM 2.5-attributable asthma per every 100,000 adults and an increase 
 of 5.66 ED visits for PM 2.5-attributable asthma per every 100,000 children. 
 
-# Conclusions
-
-More research and analyses must be conducted to address the asthma disparities across neighborhoods in New York City.  
-
-
+**Final Conclusions:** There are significant differences in pollution exposures and asthma rates between boroughs and within boroughs. More research should be done to investigate further environmental exposures and socio-economic determinants of asthma to inform future interventions on poverty and pollution related asthma.
