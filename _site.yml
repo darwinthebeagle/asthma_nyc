@@ -2,8 +2,6 @@ name: "Navigation"
 output_dir: "."
 navbar:
   right:
-    - icon: fab fa-youtube
-      href: youtube.html
     - text: Pollution Densities
       href: plotly.html   
     - text: Mold Levels
@@ -20,7 +18,5 @@ navbar:
       href: https://github.com/jessiewongus/asthma_shiny.git
       
 output:
-  html_document:
-    theme: lux
-    self_contained: false
+  html_document
   
