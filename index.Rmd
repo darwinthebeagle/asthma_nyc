@@ -13,6 +13,10 @@ output:
 
 <center><img src="pictures/pic1.jpg" style="width:70%"></center>
 
+# Overview 
+
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=vtIguH0EzTo&fbclid=IwAR0LBnSY1sajqOpsmqIMxJ4KgyeoxmEu0T-9WeJ-qgt6_UMjA_MQlnklfQI" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+
 # Introduction
 
 Asthma is a major public health concern both in New York City and nationally across the United States. According to CDC's Behaviorial Risk Factor Surveillance System (BRFSS) data in 2012, approximately 1.4 million New York adults and 314,000 children (under the age of 18) reported having asthma. While data has shown that in the last 10 years, annual asthma related deaths have decreased significantly by over 20%, the disparities in air quality and asthma rates across neighborhoods should be addressed. 
@@ -73,4 +77,5 @@ visits for PM 2.5-attributable asthma per every 100,000 adults and an increase
 of 5.66 ED visits for PM 2.5-attributable asthma per every 100,000 children. 
 
 **Final Conclusions:** 
-There are significant differences in pollution exposures between boroughs and within neighborhoods belonging to the same borough. Based on the levels of asthma-related emergency visits, hospitalization, and deaths, there is a similar observation of health gaps. More research and analyses should be conducted to address the asthma disparities across neighborhoods in New York City.    
+There are significant differences in pollution exposures between boroughs and within neighborhoods belonging to the same borough. Based on the levels of asthma-related emergency visits, hospitalization, and deaths, there is a similar observation of health gaps. More research and analyses should be conducted to address the asthma disparities across neighborhoods in New York City.
+
