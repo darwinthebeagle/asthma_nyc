@@ -14,7 +14,8 @@ output:
 <center><img src="pictures/pic1.jpg" style="width:70%"></center>
 
 # Overview
-*insert video here*
+
+Take a video tour of our site [here!](https://www.youtube.com/embed/vtIguH0EzTo?rel=0)
 
 # Introduction
 
