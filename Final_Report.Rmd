@@ -52,13 +52,16 @@ After loading the datasets we cleaned it, through filtering for specific years t
 ----------
 Exploratory analysis: Visualizations, summaries, and exploratory statistical analyses. Justify the steps you took, and show any major changes to your ideas.
 
-(plotly.rmd)
+Air Pollutant Plot
+[Github file](https://github.com/darwinthebeagle/asthma_nyc/blob/master/plotly.Rmd)
 We generated the density plots across the different air pollutants by boroughs. Originally we had planned on mapping the change over time in air quality across the different boroughs to visualize trends, including how pollution levels have changed over time within each borough and comparing the levels within boroughs. However our dataset had only provided the pollutant levels for two years. Instead, using the density plots, we are able to examine the concentration of values within each borough and the distribution based on width across the x-axis. Based on the plots, we are looking to see if there are patterns in air pollution across different boroughs. For example, whether high densities and low densities are found within the same boroughs for different pollutants. 
 
-(mold_plotly.rmd)
+Mold Plotly
+[Github file](https://github.com/darwinthebeagle/asthma_nyc/blob/master/mold_plotly.Rmd)
 In addition to outdoor air quality that may trigger and exacerbate asthma, we wanted to explore potential indoor exposures that are linked to asthma. Mold can trigger asthma and affect individuals' ability to control their asthma, particularly if it is within one's home and persists as a constant everday exposure. The data source we located reported the number of mold complaints by NYC neighborhoods. We selected the age-adjusted rates to allow the populations in our analysis to be compared when the age profiles may be potentially quite different.
 
-(linear_regression.rmd)
+Linear Regression
+[Github file](https://github.com/darwinthebeagle/asthma_nyc/blob/master/Linear_regression.Rmd)
 We ran 2 linear regression models on PM 2.5-attributable asthma ED rates for
 adults and children by neighborhood poverty and PM 2.5 air levels. PM 
 2.5-attributable asthma ED rates were age-adjusted rates per 100,000 adults or 

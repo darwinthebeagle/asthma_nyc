@@ -14,6 +14,9 @@ navbar:
       href: mailto:<jw3597@cumc.columbia.edu>
     - icon: fa-github fa-lg
       href: https://github.com/darwinthebeagle/asthma_nyc
+    - icon: Shiny fa-github fa-lg
+      href: https://github.com/jessiewongus/asthma_shiny.git
+      
 
 output:
   html_document 
