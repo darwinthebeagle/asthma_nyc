@@ -6,14 +6,17 @@ navbar:
       href: plotly.html   
     - text: Mold Levels
       href: mold_plotly.html   
-    - text: Shiny
-      href: https://jessiewongus.shinyapps.io/shiny_dashboard/
-    - text: Shinier
-      href: https://jessiewongus.shinyapps.io/shiny_dash2/
+    - text: Asthma Outcomes 
+      href: https://wongus.shinyapps.io/flex_1/
+    - text: Poverty & Pollutants
+      href: https://wongus.shinyapps.io/flex_2/
     - icon: fa-envelope fa-lg
       href: mailto:<jw3597@cumc.columbia.edu>
-    - icon: fa-github fa-lg
+    - text: Main Github
       href: https://github.com/darwinthebeagle/asthma_nyc
+    - text: Shiny Github
+      href: https://github.com/jessiewongus/asthma_shiny.git
+      
 
 output:
   html_document 

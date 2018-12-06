@@ -274,10 +274,10 @@ div.tocify {
   <a href="mold_plotly.html">Mold Levels</a>
 </li>
 <li>
-  <a href="https://jessiewongus.shinyapps.io/shiny_dashboard/">Shiny</a>
+  <a href="https://wongus.shinyapps.io/flex_1/">Asthma Outcomes</a>
 </li>
 <li>
-  <a href="https://jessiewongus.shinyapps.io/shiny_dash2/">Shinier</a>
+  <a href="https://wongus.shinyapps.io/flex_2/">Poverty &amp; Pollutants</a>
 </li>
 <li>
   <a href="mailto:&lt;jw3597@cumc.columbia.edu&gt;">
@@ -351,12 +351,18 @@ Darwin Keung | Felix Tran | Jessie Wong | Vince Tam
 <li>What is the impact of the collective exposure to high levels of all the pollutants in comparison to exposure to them individually?</li>
 <li>How does the indoor exposure to mold compare to the outdoor pollution exposure?</li>
 </ol>
-<p>Air Pollutants: Based on our density plots found in the <strong>Pollution Density</strong> tab, we see varying distribution of the different outdoor air pollutants. Among the different boroughs, Queens and Staten Island remain on the lower end of the concentration levels for all 5 pollutants examined. Manhattan had the widest distribution of concentration levels, illustrating that there is a wider spectrum of high pollutation levels in certain neighborhoods and low levels in others. Bronx and Brooklyn’s pollution levels stayed in the middle ranges in comparison to the other boroughs, however, there is significant peaking for certain pollutants, including Benzene for Bronx.</p>
-<p>Asthma-Related Health Outcomes: There are neigborhood differences in the rates of asthma-related emergency department visits, hospitalizations, and deaths. From the 2005-2007 and 2009-2011 data, we consistently found that Bronx had the highest rates of emergency department visits and hospitalizaations for adults and children (under the age of 18), where it is approximately double the rate of the other boroughs. In addition to comparison between boroughs, differences and similarities in outcomes within boroughs were also evaluated. When we stratified within neighborhoods belonging to the same boroughs, there were significant disparities found. For emergency department visits in Manhattan (2005-2007), East Harlem had a rate of 143.9 per 100,000 adults and Central Harlem had a rate of 156.1 per 100,000 adults compared to the rest of Manhattan that had a rate ranging from 8.5 to 46. We observed similar gaps across the other boroughs as well.</p>
-<p>Linear Regression: After visualizing the distribution pollutants across neighborhoods, a linear regression is performed on PM 2.5-attributable ED visits among NYC neighborhoods by PM 2.5 levels and neighborhood poverty. For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air pollution do not appear to have a significant effect. Rather, neighborhood poverty is strongly associated with ED visits. For every 1% increase in the proportion of people living in poverty in a particular neighborhood, that neighborhood on average experiences an increase of 3.46 ED visits for PM 2.5-attributable asthma per every 100,000 adults and an increase of 5.66 ED visits for PM 2.5-attributable asthma per every 100,000 children.</p>
+<p><strong>Air Pollutants:</strong></p>
+<p>Based on our density plots found in the <strong>Pollution Density</strong> tab, we see varying distribution of the different outdoor air pollutants. Among the different boroughs, Queens and Staten Island remain on the lower end of the concentration levels for all 5 pollutants examined. Manhattan had the widest distribution of concentration levels, illustrating that there is a wider spectrum of high pollutation levels in certain neighborhoods and low levels in others. Bronx and Brooklyn’s pollution levels stayed in the middle ranges in comparison to the other boroughs, however, there is significant peaking for certain pollutants, including Benzene for Bronx.</p>
+<p><strong>Asthma-Related Health Outcomes:</strong></p>
+<p>There are neigborhood differences in the rates of asthma-related emergency department visits, hospitalizations, and deaths. From the 2005-2007 and 2009-2011 data, we consistently found that Bronx had the highest rates of emergency department visits and hospitalizaations for adults and children (under the age of 18), where it is approximately double the rate of the other boroughs. In addition to comparison between boroughs, differences and similarities in outcomes within boroughs were also evaluated. When we stratified within neighborhoods belonging to the same boroughs, there were significant disparities found. For emergency department visits in Manhattan (2005-2007), East Harlem had a rate of 143.9 per 100,000 adults and Central Harlem had a rate of 156.1 per 100,000 adults compared to the rest of Manhattan that had a rate ranging from 8.5 to 46. We observed similar gaps across the other boroughs as well.</p>
+<p><strong>Mold Complaints in Homes:</strong></p>
+<p>For the data on mold complaints in homes, there were 9 neighborhoods with unavailable data. However 3 out of the 5 neighborhoods with the highest mold reports were located in Bronx. We took into account that since the data is based on self-report, there may be potentially cases that go unreported. It is possible that if there is reporting bias across neighborhoods in the different boroughs, this may underestimate the differences and level of mold in homes.</p>
+<p><strong>Linear Regression:</strong></p>
+<p>After visualizing the distribution pollutants across neighborhoods, a linear regression is performed on PM 2.5-attributable ED visits among NYC neighborhoods by PM 2.5 levels and neighborhood poverty. The code used for this section can be found <a href="https://github.com/darwinthebeagle/asthma_nyc/blob/master/Linear_regression.Rmd">here</a>. For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air pollution do not appear to have a statistically significant effect after adjusting for neighborhood poverty. Rather, neighborhood poverty is strongly associated with ED visits after adjusting for PM 2.5 air levels. For every 1 percentage point increase in the proportion of people living in poverty in a particular neighborhood, that neighborhood on average experiences an increase of 3.46 ED visits for PM 2.5-attributable asthma per every 100,000 adults and an increase of 5.66 ED visits for PM 2.5-attributable asthma per every 100,000 children.</p>
 </div>
 <div id="conclusions" class="section level1">
 <h1>Conclusions</h1>
+<p>More research and analyses must be conducted to address the asthma disparities across neighborhoods in New York City.</p>
 </div>
 
 

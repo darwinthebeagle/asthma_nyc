@@ -7,6 +7,10 @@ output:
 ---
 
 ```{r setup, include=FALSE}
+# Density Plots
+# We generated the density plots across the different air pollutants by boroughs. Originally we had planned on mapping the change over time in air quality across the different boroughs. However our dataset had only provided the pollutant levels for two years. Using the density plots, we are able to examine the concentration of values within each borough and the distribution based on width across the x-axis. Based on the plots, we are looking to see if we see patterns in air pollution across different boroughs. For example, whether high densities and low densities are found within the same boroughs for different pollutants. 
+
+# Loading the dataset and cleaning. The particular neighborhoods had to be recoded by borough. 
 library(tidyverse)
 library(viridis)
 library(flexdashboard)

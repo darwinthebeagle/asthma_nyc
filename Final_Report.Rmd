@@ -5,7 +5,9 @@ output: html_document
 
 **Motivation:**
 
-We are interested in the effects of the environment, such as air quality, on health outcomes like asthma among New York City residents. We are curious if the potential effects of air quality on asthma-related health outcomes differ across boroughs, income level, years, neighborhoods, and age groups.
+Asthma is a major public health concern both in New York City and nationally across the United States. According to CDC's Behaviorial Risk Factor Surveillance System (BRFSS) data in 2012, approximately 1.4 million New York adults and 314,000 children (under the age of 18) reported having asthma. While data has shown that in the last 10 years, annual asthma related deaths have decreased significantly by over 20%, asthma prevalence has been increasing.  
+
+Our motivation for the project is to understand the air quality across the different neighborhoods in New York City, through looking at different pollutants and their levels. There are multiple air exposures both outdoor and indoor that can in combination, exacerbate asthma conditions and prevalence among different groups, particularly vulnerable children and elderly. Our group is interesting in understanding the potential disparities that may exist across different neighborhoods in terms of air pollution distribution and its effects, particularly in neighborhoods with high poverty and low socio-economic status.  
 
 **Related work:**
 
@@ -27,32 +29,51 @@ Our initial questions:
 2) What is the relationship between pollution levels and the poverty level of the neighborhood? 
 3) How do the rates of asthma-related ED visits, hospitalizations, and deaths between different neighborhoods compare? Are there any indication of disparities?
 4) What is the impact of the collective exposure to high levels of all the pollutants in comparison to exposure to them individually?
-5) How does the indoor exposure to mold compare to the outdoor pollution exposure?
+5) How does the indoor exposure to mold compare to the outdoor pollution exposure and it's effect on asthma?
 
 Our initial questions revolved around the effects of traffic, air quality, and asthma among New York City residents differ across boroughs, income level, years, neighborhoods, and age groups. We found that our data set was missing certain years, so we dropped the time aspect of our analysis. We learned more about indoor quality and added mold as a factor to look at. The traffic data was more of an source of air pollution and not the immediate factor on a causial pathway so we focused more on air pollution than traffic data.
 
-We paired down our questions to...
+----------
 
-Poverty and asthma ED rates correlated?
-Air pollution and asthma correlated?
-(NEW) Mold and asthma correlated in NYC?
+**Data:**
+Source, scraping method, cleaning, etc.
 
+The data was obtained from the [NYC Environment & Health Data Portal](http://a816-dohbesp.nyc.gov/IndicatorPublic/PublicTracking.aspx) and the [NYC OpenData](https://data.cityofnewyork.us/Environment/Air-Quality/c3uy-2p5r/data).  
+
+<<<<<<< HEAD
 Data Source:
 NYC's Environment & Health Data Portal [Link](http://a816-dohbesp.nyc.gov/IndicatorPublic/PublicTracking.aspx)
 
 
 **Exploratory analysis:** Visualizations, summaries, and exploratory statistical analyses. Justify the steps you took, and show any major changes to your ideas.
+=======
+NYC Environment & Health Data Portal: We extracted data regarding the air pollutant levels (2005 and 2013) and asthma-related health outcomes, including deaths, hospitalization, and emergency department visits (2005-2007, 2009-2011). 
+
+NYC OpenData: We extracted data regarding mold reported in homes and poverty percentages.
+
+The New York City neighborhood boundaries were defined by the [United Hospital Fund Neighorhood Index](http://a816-dohbesp.nyc.gov/IndicatorPublic/EPHTPDF/uhf42.pdf). There are a total of 42 neighorboods across the 5 boroughs—Bronx, Staten Island, Queens, Manhattan, and Brooklyn.   
+
+Cleaning:
+After loading the datasets we cleaned it, through filtering for specific years that were the most recent and matched across the different exposures and outcomes for merge. We also converted variables to different forms to manipulate for our analysis including to factors and numericals. Our data cleaning github file can be found [here](https://github.com/darwinthebeagle/asthma_nyc/blob/master/Data_cleaning.Rmd) with the dataset loading and initial cleaning. However additional changes and methods of using the data for our analyses can be found in the links below.
+>>>>>>> c93a6b33752778fbdcffee18f4737f14efd7dcef
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 **Additional analysis:** If you undertake formal statistical analyses, describe these in detail
 =======
 (plotly.rmd)
+=======
+Air Pollutant Plot
+[Github file](https://github.com/darwinthebeagle/asthma_nyc/blob/master/plotly.Rmd)
+>>>>>>> c93a6b33752778fbdcffee18f4737f14efd7dcef
 We generated the density plots across the different air pollutants by boroughs. Originally we had planned on mapping the change over time in air quality across the different boroughs to visualize trends, including how pollution levels have changed over time within each borough and comparing the levels within boroughs. However our dataset had only provided the pollutant levels for two years. Instead, using the density plots, we are able to examine the concentration of values within each borough and the distribution based on width across the x-axis. Based on the plots, we are looking to see if there are patterns in air pollution across different boroughs. For example, whether high densities and low densities are found within the same boroughs for different pollutants. 
 
-(mold_plotly.rmd)
+Mold Plotly
+[Github file](https://github.com/darwinthebeagle/asthma_nyc/blob/master/mold_plotly.Rmd)
 In addition to outdoor air quality that may trigger and exacerbate asthma, we wanted to explore potential indoor exposures that are linked to asthma. Mold can trigger asthma and affect individuals' ability to control their asthma, particularly if it is within one's home and persists as a constant everday exposure. The data source we located reported the number of mold complaints by NYC neighborhoods. We selected the age-adjusted rates to allow the populations in our analysis to be compared when the age profiles may be potentially quite different.
 
+<<<<<<< HEAD
 (linear_regression.rmd)
 >>>>>>> 474d9531edca428bdd149b9c2180e064c4fd1efe
 
@@ -60,6 +81,25 @@ For our statistical analyses we chose to use a linear regression model as our ou
 
 
 **Discussion:** What were your findings? Are they what you expect? What insights into the data can you make?
+=======
+Linear Regression
+[Github file](https://github.com/darwinthebeagle/asthma_nyc/blob/master/Linear_regression.Rmd)
+We ran 2 linear regression models on PM 2.5-attributable asthma ED rates for
+adults and children by neighborhood poverty and PM 2.5 air levels. PM 
+2.5-attributable asthma ED rates were age-adjusted rates per 100,000 adults or 
+children depending on the model for the timespan 2009-2011. PM 2.5 air levels
+were measured as the average of the yearly mean micrograms of PM 2.5 per cubic
+meter of air for the years 2009, 2010, and 2011. Neighborhood poverty was
+measured as the proportion of people living in poverty in a given neighborhood. 
+Neighborhoods are defined as [such](https://www.health.ny.gov/statistics/cancer/registry/appendix/neighborhoods.htm). 
+We calculated the beta coefficients for PM 2.5 air levels and neighborhood 
+poverty, 95% confidence intervals, and p-values for t-tests at a 5% significance
+level of each estimated coefficient after controlling for the other coefficient. 
+
+
+**Discussion** 
+What were your findings? Are they what you expect? What insights into the data can you make?
+>>>>>>> c93a6b33752778fbdcffee18f4737f14efd7dcef
 
 Air Pollutants: 
 Based on our density plots found in the Pollution Density tab, we see varying distribution of the different outdoor air pollutants. Among the different boroughs, Queens and Staten Island remain on the lower end of the concentration levels for all 5 pollutants examined. Manhattan had the widest distribution of concentration levels, illustrating that there is a wider spectrum of high pollutation levels in certain neighborhoods and low levels in others. Bronx and Brooklyn's pollution levels stayed in the middle ranges in comparison to the other boroughs, however, there is significant peaking for certain pollutants, including Benzene for Bronx. We expected there the be a more consistent and defined pattern across the different pollutants across boroughs, of boroughs with high and low densities. However this may be attributed to the manner that the pollutant is emitted and the sources. Through exploring the data, we also recognized that there is significant within borough differences and gaps, where certain regions of the borough experience very high densities of pollution and others experience very low, which is surprising considering that they are in close proximity. 

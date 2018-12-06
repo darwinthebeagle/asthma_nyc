@@ -1,18 +1,21 @@
 ---
-title: "Linear_regression"
+title: "Linear regression"
 author: "Felix Tran"
 date: "December 2, 2018"
 output: html_document
 ---
 
 This file runs a linear regression on PM 2.5-attributable ED visits among NYC
-neighborhoods by PM 2.5 levels and neighborhood poverty.
+neighborhoods by PM 2.5 levels and neighborhood poverty. Neighborhoods are 
+defined by the [United Hospital Fund 42 neighborhood designations](https://www.health.ny.gov/statistics/cancer/registry/appendix/neighborhoods.htm)
+
+<br><br>
 
 # The regression model
 
-(Neighborhood rate of PM 2.5-attributable ED visits per 100,000 people) = 
-(Intercept) + (Average micrograms of PM 2.5 per cubic meter of air) +
-(% of people in neighborhood living in poverty)
+$Asthma\:ED\:rate = Intercept + PM\:2.5\:levels + Neighborhood\:poverty$
+
+<br><br>
 
 # The data
 
@@ -21,9 +24,12 @@ Rates of ED visits were obtained from NYC Open Data for the timeframe 2009-2011.
 Rates were reported for children 0-17 years old and adults 18 years and older by
 neighborhood. 
 
+
 ### PM 2.5 air pollution
-Measures of PM 2.5 air pollution were obtained from the NYC Environment and
-Health Data Portal. Measures cover the timeframe 2009-2011.
+PM 2.5 air levels are measured as average micrograms of PM 2.5 per cubic meter 
+of air for a given year. Measures of PM 2.5 air pollution were obtained from the 
+NYC Environment and Health Data Portal. Measures cover the timeframe 2009-2011.
+
 
 ### Neighborhood poverty
 Measure of neighborhood poverty were obtained from the NYC Environment and 
@@ -44,6 +50,8 @@ library(readr)
 
 # Cleaning the data
 
+First, the data are cleaned and merged by neighborhood using a unique ID
+assigned to each neighborhood.
 ```{r}
 poverty_df <- readr::read_csv('./Data/pm_and_poverty_09-13.csv') %>% 
   janitor::clean_names() %>% 
@@ -80,6 +88,8 @@ asthma_df <- readr::read_csv('./Data/nyc_asthma_cleaned.csv') %>%
          adult_rate = rate_18_yrs_and_older)
 ```
 
+<br><br>
+
 # Regression on adult ED visits
 ```{r, echo = F}
 calc_lower_ci <- function(beta, stnd.error) {
@@ -109,6 +119,22 @@ adult_reg_df %>%
                neighborhood poverty",
                align = 'c')
 ```
+<br><br>
+$Asthma\:ED\:Rate = -42.67 + 3.46(Neighborhood\:poverty) + 2.02(PM\:2.5\:air\:levels)$
+
+For every 1 unit increase in PM 2.5 air levels, adult PM 2.5-attributable asthma
+ED visits per 100,000 adults for a given neighborhood increase on average by 
+2.02 visits. The confidence interval (-3.9 to 7.93) suggests this observed 
+association may be spurious. 
+
+For every 1 percentage point increase in the proportion of people living in 
+poverty in a neighborhood, adult PM 2.5-attributable asthma ED visits per 
+100,000 adults for a given neighborhood increase on average by 3.46 visits. The
+confidence interval (2.71 to 4.2) suggests that we are unlikely to observe
+this association if neighborhood poverty truly has no association with asthma ED 
+rates.
+
+<br><br>
 
 # Regression on child ED visits
 ```{r, echo = F}
@@ -129,12 +155,26 @@ child_reg_df %>%
                neighborhood poverty",
                align = 'c')
 ```
+<br><br>
+$Asthma\:ED\:Rate = -99.61 + 5.66(Neighborhood\:poverty) + 8.29(PM\:2.5\:air\:levels)$
+
+After adjusting for neighborhood poverty, for every 1 unit increase in PM 2.5 
+air levels, child PM 2.5-attributable asthma ED visits per 100,000 children for 
+a given neighborhood increase on average by 8.29 visits. The 95% confidence 
+interval (-3.96 to 20.53) suggests this observed association may be spurious. 
+
+After adjusting for PM 2.5 air levels, for every 1 percentage point increase in
+the proportion of people living in poverty in a neighborhood, child
+PM 2.5-attributable asthma ED visits per 100,000 children for a given 
+neighborhood increase on average by 5.66 visits. The 95% confidence interval 
+(4.12 to 7.2) suggests that we are unlikely to observe this association if 
+neighborhood poverty truly has no association with asthma ED rates.
+
+<br><br>
 
 # Comments
 For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air
-pollution do not appear to have a significant effect. Rather, neighborhood 
-poverty is strongly associated with ED visits. For every 1% increase in the 
-proportion of people living in poverty in a particular neighborhood, that
-neighborhood on average experiences an increase of 3.46 ED visits for 
-PM 2.5-attributable asthma per every 100,000 adults and an increase of 5.66
-ED visits for PM 2.5-attributable asthma per every 100,000 children. 
+pollution do not appear to have a statistically significant effect after
+controlling for the effect of neighborhood poverty. Rather, 
+neighborhood poverty is more strongly associated with asthma ED visits after
+adjusting for PM 2.5 air levels.
