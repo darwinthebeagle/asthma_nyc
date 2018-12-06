@@ -12,9 +12,9 @@ navbar:
       href: https://wongus.shinyapps.io/flex_2/
     - icon: fa-envelope fa-lg
       href: mailto:<jw3597@cumc.columbia.edu>
-    - icon: fa-github fa-lg
+    - text: Main Github
       href: https://github.com/darwinthebeagle/asthma_nyc
-    - icon: Shiny fa-github fa-lg
+    - text: Shiny Github
       href: https://github.com/jessiewongus/asthma_shiny.git
       
 
