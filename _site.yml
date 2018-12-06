@@ -11,11 +11,13 @@ navbar:
     - text: Poverty & Pollutants
       href: https://wongus.shinyapps.io/flex_2/
     - icon: fa-envelope fa-lg
-      href: mailto:<jw3597@cumc.columbia.edu>
+      href: mailto:<jw3597@cumc.columbia.edu, dk2759@cumc.columbia.edu, vt2243@cumc.columbia.edu, fwt2107@cumc.columbia.edu>
     - text: Main Github
       href: https://github.com/darwinthebeagle/asthma_nyc
     - text: Shiny Github
       href: https://github.com/jessiewongus/asthma_shiny.git
+    - icon: fab fa-youtube
+      href: https://www.youtube.com/watch?v=vtIguH0EzTo
       
 output:
   html_document
