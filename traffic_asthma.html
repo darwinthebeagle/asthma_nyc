@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Darwin Keung" />
+
+
+<title>traffic_data</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="plotly.html">Pollution Densities</a>
+</li>
+<li>
+  <a href="mold_plotly.html">Mold Levels</a>
+</li>
+<li>
+  <a href="https://wongus.shinyapps.io/flex_1/">Asthma Outcomes</a>
+</li>
+<li>
+  <a href="https://wongus.shinyapps.io/flex_2/">Poverty &amp; Pollutants</a>
+</li>
+<li>
+  <a href="mailto:&lt;jw3597@cumc.columbia.edu&gt;">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/darwinthebeagle/asthma_nyc">Main Github</a>
+</li>
+<li>
+  <a href="https://github.com/jessiewongus/asthma_shiny.git">Shiny Github</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">traffic_data</h1>
+<h4 class="author"><em>Darwin Keung</em></h4>
+<h4 class="date"><em>12/1/2018</em></h4>
+
+</div>
+
+
+<p>This Rmarkdown file contains code for reading in and cleaning the raw dataset.</p>
+<p>Read in dataset. Looking at the variable for year, some observations had values which do not make sense. We thus kept only the observations with values for the variable <strong>year_description</strong> that make sense. Cleaned variable names.</p>
+<pre class="r"><code>asthma_df &lt;- readr::read_csv(&#39;./Data/Air_Quality.csv&#39;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   indicator_data_id = col_integer(),
+##   indicator_id = col_integer(),
+##   name = col_character(),
+##   Measure = col_character(),
+##   geo_type_name = col_character(),
+##   geo_entity_id = col_integer(),
+##   geo_entity_name = col_character(),
+##   year_description = col_character(),
+##   data_valuemessage = col_double()
+## )</code></pre>
+<pre><code>## Warning in rbind(names(probs), probs_f): number of columns of result is not
+## a multiple of vector length (arg 1)</code></pre>
+<pre><code>## Warning: 33 parsing failures.
+## row # A tibble: 5 x 5 col     row col               expected actual      file                     expected   &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;                    actual 1  2466 data_valuemessage a double Port Morris &#39;./Data/Air_Quality.csv&#39; file 2  2470 data_valuemessage a double Mt. Hope    &#39;./Data/Air_Quality.csv&#39; row 3  2472 data_valuemessage a double Fordham     &#39;./Data/Air_Quality.csv&#39; col 4  2473 data_valuemessage a double Marble Hill &#39;./Data/Air_Quality.csv&#39; expected 5  2475 data_valuemessage a double Pelham Bay  &#39;./Data/Air_Quality.csv&#39;
+## ... ................. ... ....................................................................... ........ ....................................................................... ...... ....................................................................... .... ....................................................................... ... ....................................................................... ... ....................................................................... ........ .......................................................................
+## See problems(...) for more details.</code></pre>
+<pre class="r"><code>asthma_df %&gt;% 
+  group_by(year_description) %&gt;% 
+  summarize(counts = n())</code></pre>
+<pre><code>## # A tibble: 57 x 2
+##    year_description                counts
+##    &lt;chr&gt;                            &lt;int&gt;
+##  1 2-Year Winter Average 2009-2010     48
+##  2 2005                               264
+##  3 2005-2007                          960
+##  4 2009-2011                          960
+##  5 2013                               144
+##  6 Annual Average 2009-2010           240
+##  7 Bath Beach                           3
+##  8 Belmont                              3
+##  9 Briarwood                            3
+## 10 Brighton Beach                       3
+## # ... with 47 more rows</code></pre>
+<pre class="r"><code>asthma_df &lt;- asthma_df %&gt;% 
+  filter(year_description %in% c(&#39;2005&#39;, &#39;2005-2007&#39;, &#39;2009-2011&#39;, &#39;2013&#39;)) %&gt;% 
+  janitor::clean_names()</code></pre>
+<p>Looking at the different observations recorded in the dataset. There are 18 unique kinds of observations recorded for NYC overall, by boroughs, and by neighborhoods for the corresponding years.</p>
+<pre class="r"><code>asthma_df %&gt;% 
+  mutate(obsv = stringr::str_c(name, measure, sep = &quot; &quot;)) %&gt;% 
+  group_by(obsv) %&gt;% 
+  summarize(counts = n())</code></pre>
+<pre><code>## # A tibble: 18 x 2
+##    obsv                                                             counts
+##    &lt;chr&gt;                                                             &lt;int&gt;
+##  1 Air Toxics Concentrations- Average Benzene Concentrations Avera…     48
+##  2 Air Toxics Concentrations- Average Formaldehyde Concentrations …     48
+##  3 Boiler Emissions- Total NOx Emissions Per km2                        48
+##  4 Boiler Emissions- Total PM2.5 Emissions Per km2                      48
+##  5 Boiler Emissions- Total SO2 Emissions Per km2                        48
+##  6 O3-Attributable Asthma ED Visits Rate- 18 Yrs and Older             192
+##  7 O3-Attributable Asthma ED Visits Rate- Children 0 to 17 Yrs Old     192
+##  8 O3-Attributable Asthma Hospitalizations Rate- 18 Yrs and Older      192
+##  9 O3-Attributable Asthma Hospitalizations Rate- Children 0 to 17 …    192
+## 10 O3-Attributable Cardiac and Respiratory Deaths Rate                 192
+## 11 PM2.5-Attributable Asthma ED Visits Rate- 18 Yrs and Older          192
+## 12 PM2.5-Attributable Asthma ED Visits Rate- Children 0 to 17 Yrs …    192
+## 13 PM2.5-Attributable Cardiovascular Hospitalizations (Adults 40 Y…    192
+## 14 PM2.5-Attributable Deaths Rate - Adults 30 Yrs and Older            192
+## 15 PM2.5-Attributable Respiratory Hospitalizations (Adults 20 Yrs …    192
+## 16 Traffic Density- Annual Vehicle Miles Traveled (VMT) for Cars P…     56
+## 17 Traffic Density- Annual Vehicle Miles Traveled (VMT) for Trucks…     56
+## 18 Traffic Density- Annual Vehicle Miles Traveled (VMT) Per 100 km2     56</code></pre>
+<p>Save this cleaned dataset in a csv file.</p>
+<pre class="r"><code>readr::write_csv(asthma_df, path = &#39;./Data/nyc_asthma_cleaned.csv&#39;)</code></pre>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

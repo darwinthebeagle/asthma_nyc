@@ -189,22 +189,16 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="about.html">
-    <span class=" Home"></span>
-     
-  </a>
-</li>
-<li>
   <a href="plotly.html">Pollution Densities</a>
 </li>
 <li>
   <a href="mold_plotly.html">Mold Levels</a>
 </li>
 <li>
-  <a href="https://jessiewongus.shinyapps.io/shiny_dashboard/">Shiny</a>
+  <a href="https://wongus.shinyapps.io/flex_1/">Asthma Outcomes</a>
 </li>
 <li>
-  <a href="https://jessiewongus.shinyapps.io/shiny_dash2/">Shinier</a>
+  <a href="https://wongus.shinyapps.io/flex_2/">Poverty &amp; Pollutants</a>
 </li>
 <li>
   <a href="mailto:&lt;jw3597@cumc.columbia.edu&gt;">
@@ -213,10 +207,10 @@ $(document).ready(function () {
   </a>
 </li>
 <li>
-  <a href="https://github.com/darwinthebeagle/asthma_nyc">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
+  <a href="https://github.com/darwinthebeagle/asthma_nyc">Main Github</a>
+</li>
+<li>
+  <a href="https://github.com/jessiewongus/asthma_shiny.git">Shiny Github</a>
 </li>
       </ul>
     </div><!--/.nav-collapse -->
@@ -239,24 +233,21 @@ $(document).ready(function () {
 <pre class="r"><code>asthma_df &lt;- readr::read_csv(&#39;./Data/Air_Quality.csv&#39;)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
-##   indicator_data_id = col_double(),
-##   indicator_id = col_double(),
+##   indicator_data_id = col_integer(),
+##   indicator_id = col_integer(),
 ##   name = col_character(),
 ##   Measure = col_character(),
 ##   geo_type_name = col_character(),
-##   geo_entity_id = col_double(),
+##   geo_entity_id = col_integer(),
 ##   geo_entity_name = col_character(),
 ##   year_description = col_character(),
 ##   data_valuemessage = col_double()
 ## )</code></pre>
+<pre><code>## Warning in rbind(names(probs), probs_f): number of columns of result is not
+## a multiple of vector length (arg 1)</code></pre>
 <pre><code>## Warning: 33 parsing failures.
-##  row               col expected      actual                     file
-## 2466 data_valuemessage a double Port Morris &#39;./Data/Air_Quality.csv&#39;
-## 2470 data_valuemessage a double Mt. Hope    &#39;./Data/Air_Quality.csv&#39;
-## 2472 data_valuemessage a double Fordham     &#39;./Data/Air_Quality.csv&#39;
-## 2473 data_valuemessage a double Marble Hill &#39;./Data/Air_Quality.csv&#39;
-## 2475 data_valuemessage a double Pelham Bay  &#39;./Data/Air_Quality.csv&#39;
-## .... ................. ........ ........... ........................
+## row # A tibble: 5 x 5 col     row col               expected actual      file                     expected   &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;                    actual 1  2466 data_valuemessage a double Port Morris &#39;./Data/Air_Quality.csv&#39; file 2  2470 data_valuemessage a double Mt. Hope    &#39;./Data/Air_Quality.csv&#39; row 3  2472 data_valuemessage a double Fordham     &#39;./Data/Air_Quality.csv&#39; col 4  2473 data_valuemessage a double Marble Hill &#39;./Data/Air_Quality.csv&#39; expected 5  2475 data_valuemessage a double Pelham Bay  &#39;./Data/Air_Quality.csv&#39;
+## ... ................. ... ....................................................................... ........ ....................................................................... ...... ....................................................................... .... ....................................................................... ... ....................................................................... ... ....................................................................... ........ .......................................................................
 ## See problems(...) for more details.</code></pre>
 <pre class="r"><code>poverty_df &lt;- readr::read_csv(&#39;./Data/Poverty.csv&#39;)</code></pre>
 <pre><code>## Parsed with column specification:
@@ -269,8 +260,8 @@ $(document).ready(function () {
 ##   `Indicator Name` = col_character(),
 ##   Number = col_number(),
 ##   Percent = col_double(),
-##   `Notes Number` = col_logical(),
-##   `Notes Percent` = col_logical()
+##   `Notes Number` = col_character(),
+##   `Notes Percent` = col_character()
 ## )</code></pre>
 <pre class="r"><code>asthma_df %&gt;% 
   group_by(year_description) %&gt;% 
@@ -338,51 +329,6 @@ poverty_df %&gt;%
 ## 18 Traffic Density- Annual Vehicle Miles Traveled (VMT) Per 100 km2     56</code></pre>
 <p>Save this cleaned dataset in a csv file.</p>
 <pre class="r"><code>readr::write_csv(asthma_df, path = &#39;./Data/nyc_asthma_cleaned.csv&#39;)</code></pre>
-<pre class="r"><code>asthma_clean = asthma_df %&gt;%
-  mutate(geo_entity_id = as.factor(geo_entity_id),
-         UHF = recode(geo_entity_id, &quot;101&quot; = &quot;Bronx&quot;, &quot;102&quot; = &quot;Bronx&quot;, &quot;103&quot; = &quot;Bronx&quot;, &quot;104&quot; = &quot;Bronx&quot;, &quot;105&quot; = &quot;Bronx&quot;, &quot;106&quot; = &quot;Bronx&quot;, &quot;107&quot; = &quot;Bronx&quot;, &quot;201&quot; = &quot;Brooklyn&quot;, &quot;202&quot; = &quot;Brooklyn&quot;, &quot;203&quot; = &quot;Brooklyn&quot;, &quot;204&quot; = &quot;Brooklyn&quot;, &quot;205&quot; = &quot;Brooklyn&quot;, &quot;206&quot; = &quot;Brooklyn&quot;, &quot;207&quot; = &quot;Brooklyn&quot;, &quot;208&quot; = &quot;Brooklyn&quot;, &quot;209&quot; = &quot;Brooklyn&quot;, &quot;210&quot; = &quot;Brooklyn&quot;, &quot;211&quot; = &quot;Brooklyn&quot;, &quot;301&quot; = &quot;Manhattan&quot;, &quot;302&quot; = &quot;Manhattan&quot;, &quot;303&quot; = &quot;Manhattan&quot;, &quot;304&quot; = &quot;Manhattan&quot;, &quot;305&quot; = &quot;Manhattan&quot;, &quot;306&quot; = &quot;Manhattan&quot;, &quot;307&quot; = &quot;Manhattan&quot;, &quot;308&quot; = &quot;Manhattan&quot;, &quot;309&quot; = &quot;Manhattan&quot;, &quot;310&quot; = &quot;Manhattan&quot;, &quot;401&quot; = &quot;Queens&quot;, &quot;402&quot; = &quot;Queens&quot;, &quot;403&quot; = &quot;Queens&quot;, &quot;404&quot; = &quot;Queens&quot;, &quot;405&quot; = &quot;Queens&quot;, &quot;406&quot; = &quot;Queens&quot;, &quot;407&quot; = &quot;Queens&quot;, &quot;408&quot; = &quot;Queens&quot;, &quot;409&quot; = &quot;Queens&quot;, &quot;410&quot; = &quot;Queens&quot;, &quot;501&quot; = &quot;Staten Island&quot;, &quot;502&quot; = &quot;Staten Island&quot;, &quot;503&quot; = &quot;Staten Island&quot;, &quot;504&quot; = &quot;Staten Island&quot;)) %&gt;%
-  filter(geo_type_name == &quot;UHF42&quot;)
-
-benz_dens = asthma_clean %&gt;% 
-  filter(name == &quot;Air Toxics Concentrations- Average Benzene Concentrations&quot;) %&gt;%
-  group_by(UHF) %&gt;%
-  ggplot(aes(x = data_valuemessage, fill = UHF)) +
-  geom_density(alpha = 0.5) +
-  labs(title = &quot;Average Benzene Concentrations&quot;,
-       x = &quot;Neighborhood&quot;,
-       y = &quot;Concetrations&quot;) + 
-  theme(legend.position = &quot;none&quot;)
-
-SO2_dens = asthma_clean %&gt;% 
-  filter(name == &quot;Boiler Emissions- Total SO2 Emissions&quot;) %&gt;%
-  group_by(UHF) %&gt;%
-  ggplot(aes(x = data_valuemessage, fill = UHF)) +
-  geom_density(alpha = 0.5) +
-  theme(legend.position = &quot;none&quot;)
-
-Formaldehyde_dens = asthma_clean %&gt;% 
-  filter(name == &quot;Air Toxics Concentrations- Average Formaldehyde Concentrations&quot;) %&gt;%
-  group_by(UHF) %&gt;%
-  ggplot(aes(x = data_valuemessage, fill = UHF)) +
-  geom_density(alpha = 0.5) + 
-  theme(legend.position = &quot;none&quot;)
-
-PM_dens = asthma_clean %&gt;% 
-  filter(name == &quot;Boiler Emissions- Total PM2.5 Emissions&quot;) %&gt;%
-  group_by(UHF) %&gt;%
-  ggplot(aes(x = data_valuemessage, fill = UHF)) +
-  geom_density(alpha = 0.5) +
-  theme(legend.position = &quot;none&quot;)
-
-NO2_dens = asthma_clean %&gt;% 
-  filter(name == &quot;Boiler Emissions- Total NOx Emissions&quot;) %&gt;%
-  group_by(UHF) %&gt;%
-  ggplot(aes(x = data_valuemessage, fill = UHF)) +
-  geom_density(alpha = 0.5) +
-  theme(legend.position = &quot;bottom&quot;)
-
-(SO2_dens + PM_dens + Formaldehyde_dens + benz_dens + NO2_dens)</code></pre>
-<p><img src="Data_cleaning_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 
 
 
