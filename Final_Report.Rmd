@@ -58,8 +58,19 @@ We generated the density plots across the different air pollutants by boroughs. 
 (mold_plotly.rmd)
 In addition to outdoor air quality that may trigger and exacerbate asthma, we wanted to explore potential indoor exposures that are linked to asthma. Mold can trigger asthma and affect individuals' ability to control their asthma, particularly if it is within one's home and persists as a constant everday exposure. The data source we located reported the number of mold complaints by NYC neighborhoods. We selected the age-adjusted rates to allow the populations in our analysis to be compared when the age profiles may be potentially quite different.
 
-Additional analysis: If you undertake formal statistical analyses, describe these in detail
 (linear_regression.rmd)
+We ran 2 linear regression models on PM 2.5-attributable asthma ED rates for
+adults and children by neighborhood poverty and PM 2.5 air levels. PM 
+2.5-attributable asthma ED rates were age-adjusted rates per 100,000 adults or 
+children depending on the model for the timespan 2009-2011. PM 2.5 air levels
+were measured as the average of the yearly mean micrograms of PM 2.5 per cubic
+meter of air for the years 2009, 2010, and 2011. Neighborhood poverty was
+measured as the proportion of people living in poverty in a given neighborhood. 
+Neighborhoods are defined as [such](https://www.health.ny.gov/statistics/cancer/registry/appendix/neighborhoods.htm). 
+We calculated the beta coefficients for PM 2.5 air levels and neighborhood 
+poverty, 95% confidence intervals, and p-values for t-tests at a 5% significance
+level of each estimated coefficient after controlling for the other coefficient. 
+
 
 **Discussion** 
 What were your findings? Are they what you expect? What insights into the data can you make?

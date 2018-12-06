@@ -194,10 +194,10 @@ $(document).ready(function () {
   <a href="mold_plotly.html">Mold Levels</a>
 </li>
 <li>
-  <a href="https://jessiewongus.shinyapps.io/shiny_dashboard/">Shiny</a>
+  <a href="https://wongus.shinyapps.io/flex_1/">Asthma Outcomes</a>
 </li>
 <li>
-  <a href="https://jessiewongus.shinyapps.io/shiny_dash2/">Shinier</a>
+  <a href="https://wongus.shinyapps.io/flex_2/">Poverty &amp; Pollutants</a>
 </li>
 <li>
   <a href="mailto:&lt;jw3597@cumc.columbia.edu&gt;">
@@ -485,13 +485,13 @@ pm_level
 </tbody>
 </table>
 <p><br><br> <span class="math inline">\(Asthma\:ED\:Rate = -99.61 + 5.66(Neighborhood\:poverty) + 8.29(PM\:2.5\:air\:levels)\)</span></p>
-<p>For every 1 unit increase in PM 2.5 air levels, child PM 2.5-attributable asthma ED visits per 100,000 children for a given neighborhood increase on average by 8.29 visits. The 95% confidence interval (-3.96 to 20.53) suggests this observed association may be spurious.</p>
-<p>For every 1 percentage point increase in the proportion of people living in poverty in a neighborhood, child PM 2.5-attributable asthma ED visits per 100,000 children for a given neighborhood increase on average by 5.66 visits. The 95% confidence interval (4.12 to 7.2) suggests that we are unlikely to observe this association if neighborhood poverty truly has no association with asthma ED rates.</p>
+<p>After adjusting for neighborhood poverty, for every 1 unit increase in PM 2.5 air levels, child PM 2.5-attributable asthma ED visits per 100,000 children for a given neighborhood increase on average by 8.29 visits. The 95% confidence interval (-3.96 to 20.53) suggests this observed association may be spurious.</p>
+<p>After adjusting for PM 2.5 air levels, for every 1 percentage point increase in the proportion of people living in poverty in a neighborhood, child PM 2.5-attributable asthma ED visits per 100,000 children for a given neighborhood increase on average by 5.66 visits. The 95% confidence interval (4.12 to 7.2) suggests that we are unlikely to observe this association if neighborhood poverty truly has no association with asthma ED rates.</p>
 <p><br><br></p>
 </div>
 <div id="comments" class="section level1">
 <h1>Comments</h1>
-<p>For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air pollution do not appear to have a statistically significant effect. Rather, neighborhood poverty is more strongly associated with asthma ED visits.</p>
+<p>For both child and adult rates of ED vists, levels of neighborhood PM 2.5 air pollution do not appear to have a statistically significant effect after controlling for the effect of neighborhood poverty. Rather, neighborhood poverty is more strongly associated with asthma ED visits after adjusting for PM 2.5 air levels.</p>
 </div>
 
 
