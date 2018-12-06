@@ -74,6 +74,3 @@ of 5.66 ED visits for PM 2.5-attributable asthma per every 100,000 children.
 
 **Final Conclusions:** There are significant differences in pollution exposures and asthma rates between boroughs and within boroughs. More research should be done to investigate further environmental exposures and socio-economic determinants of asthma to inform future interventions on poverty and pollution related asthma.
 
-# Video Tour
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/vtIguH0EzTo" frameborder="0"allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>
